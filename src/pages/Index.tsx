@@ -15,7 +15,11 @@ const Index = () => {
   useEffect(() => {
     // Preload critical images
     const images = [
-      'https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&q=80'
+      'https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1510627498534-cf7e9002facc?auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1581235720704-06d3acfcb85f?auto=format&fit=crop&q=80'
     ];
     
     images.forEach(src => {

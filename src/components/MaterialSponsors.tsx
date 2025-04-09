@@ -4,27 +4,27 @@ import React from 'react';
 const sponsors = [
   {
     name: "BuildCorp Materials",
-    logo: "https://placehold.co/200x80/F9F9F9/333333?text=BuildCorp",
+    logo: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&q=80&w=200&h=80",
   },
   {
     name: "SteelWorks",
-    logo: "https://placehold.co/200x80/F9F9F9/333333?text=SteelWorks",
+    logo: "https://images.unsplash.com/photo-1460574283810-2aab119d8511?auto=format&fit=crop&q=80&w=200&h=80",
   },
   {
     name: "ConcretePro",
-    logo: "https://placehold.co/200x80/F9F9F9/333333?text=ConcretePro",
+    logo: "https://images.unsplash.com/photo-1459767129954-1b1c1f9b9ace?auto=format&fit=crop&q=80&w=200&h=80",
   },
   {
     name: "GlassInnovate",
-    logo: "https://placehold.co/200x80/F9F9F9/333333?text=GlassInnovate",
+    logo: "https://images.unsplash.com/photo-1439886183900-e79ec0057170?auto=format&fit=crop&q=80&w=200&h=80",
   },
   {
     name: "WoodCraft",
-    logo: "https://placehold.co/200x80/F9F9F9/333333?text=WoodCraft",
+    logo: "https://images.unsplash.com/photo-1465379944081-7f47de8d74ac?auto=format&fit=crop&q=80&w=200&h=80",
   },
   {
     name: "LightTech",
-    logo: "https://placehold.co/200x80/F9F9F9/333333?text=LightTech",
+    logo: "https://images.unsplash.com/photo-1476357471311-43c0db9fb2b4?auto=format&fit=crop&q=80&w=200&h=80",
   },
 ];
 
