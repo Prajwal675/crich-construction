@@ -1,16 +1,30 @@
 
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 
 const Hero = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.8; // Slightly slow down video for dramatic effect
+    }
+  }, []);
+
   return (
     <section className="relative h-screen flex items-center overflow-hidden">
-      {/* Background image */}
+      {/* Background video */}
       <div className="absolute inset-0 z-0">
-        <img
-          src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&q=80"
-          alt="Construction site with workers and equipment"
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
           className="w-full h-full object-cover"
-        />
+        >
+          <source src="https://player.vimeo.com/external/562458436.sd.mp4?s=3bf07a3cb34cc9e6504aa4abe067c55e9e5e00b0&profile_id=164&oauth2_token_id=57447761" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50"></div>
       </div>
 
@@ -22,7 +36,7 @@ const Hero = () => {
             <span className="block">Together</span>
           </h1>
           <p className="text-xl text-white/90 mb-8 max-w-xl">
-            Transforming visions into reality with expertise, precision, and dedication. BuildAcre delivers excellence in every project.
+            Transforming visions into reality with expertise, precision, and dedication. CRICH CONSTRUCTIONS delivers excellence in every project.
           </p>
           <a 
             href="#contact" 

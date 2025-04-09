@@ -29,14 +29,19 @@ const Navbar = () => {
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'}`}>
       <div className="container mx-auto container-padding">
         <div className="flex justify-between items-center">
-          <a href="#" className="text-2xl font-bold text-buildacre-darkgray">
-            BUILDACRE
-          </a>
+          <div className="flex items-center space-x-3">
+            {/* Logo space */}
+            <div className="w-10 h-10 bg-buildacre-orange rounded-md"></div>
+            <a href="#" className="text-2xl font-bold text-buildacre-darkgray">
+              CRICH CONSTRUCTIONS
+            </a>
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             <a href="#services" className="font-medium hover:text-buildacre-blue transition-colors">Services</a>
             <a href="#about" className="font-medium hover:text-buildacre-blue transition-colors">About</a>
+            <a href="#projects" className="font-medium hover:text-buildacre-blue transition-colors">Projects</a>
             <a href="#testimonials" className="font-medium hover:text-buildacre-blue transition-colors">Testimonials</a>
             <a href="#contact" className="btn-primary">Contact Us</a>
           </div>
@@ -68,6 +73,13 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 About
+              </a>
+              <a 
+                href="#projects" 
+                className="font-medium py-2 hover:text-buildacre-blue transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Projects
               </a>
               <a 
                 href="#testimonials" 

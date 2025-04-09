@@ -7,6 +7,9 @@ import UspsSection from '../components/UspsSection';
 import TestimonialsSection from '../components/TestimonialsSection';
 import ContactForm from '../components/ContactForm';
 import Footer from '../components/Footer';
+import MaterialSponsors from '../components/MaterialSponsors';
+import ProjectsSection from '../components/ProjectsSection';
+import WhatsAppChat from '../components/WhatsAppChat';
 
 const Index = () => {
   useEffect(() => {
@@ -28,10 +31,13 @@ const Index = () => {
         <Hero />
         <ServicesSection />
         <UspsSection />
+        <ProjectsSection />
         <TestimonialsSection />
+        <MaterialSponsors />
         <ContactForm />
       </main>
       <Footer />
+      <WhatsAppChat />
     </div>
   );
 };
