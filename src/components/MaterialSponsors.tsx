@@ -33,6 +33,13 @@ const MaterialSponsors = () => {
     <section className="py-16 bg-buildacre-lightgray">
       <div className="container mx-auto container-padding">
         <div className="text-center mb-10">
+          <div className="w-24 h-24 mx-auto mb-4">
+            <img 
+              src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&q=80&w=200&h=200" 
+              alt="Construction materials" 
+              className="w-full h-full object-cover rounded-full"
+            />
+          </div>
           <h2 className="text-2xl font-bold text-buildacre-darkgray mb-2">Our Material Partners</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             We collaborate with industry-leading material suppliers to ensure the highest quality in every project.
@@ -43,13 +50,14 @@ const MaterialSponsors = () => {
           {sponsors.map((sponsor, index) => (
             <div 
               key={index} 
-              className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow flex items-center justify-center"
+              className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center justify-center gap-2"
             >
               <img 
                 src={sponsor.logo} 
                 alt={`${sponsor.name} logo`} 
                 className="max-h-16 object-contain grayscale hover:grayscale-0 transition-all duration-300"
               />
+              <span className="text-sm font-medium text-center">{sponsor.name}</span>
             </div>
           ))}
         </div>

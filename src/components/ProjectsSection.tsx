@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { 
   Carousel,
@@ -39,7 +38,7 @@ const ongoingProjects = [
     completionDate: "Mar 2025",
     description: "Major renovation of historical transit hub with modern facilities while preserving architectural heritage.",
     videoSrc: "https://player.vimeo.com/external/476768078.sd.mp4?s=c3d05c9eea0eeba2c2a9bc99dc24a0afe71fd7b4&profile_id=165&oauth2_token_id=57447761",
-    thumbnailSrc: "https://images.unsplash.com/photo-1485628390555-1a7bd503f9fe?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    thumbnailSrc: "https://images.unsplash.com/photo-1495385794356-15371f348c31?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     projectType: "Infrastructure"
   }
 ];
