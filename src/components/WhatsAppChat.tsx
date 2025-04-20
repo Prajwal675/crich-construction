@@ -1,19 +1,42 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MessageCircle, X } from 'lucide-react';
 
 const WhatsAppChat = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const phoneNumber = "919876543210"; // Replace with actual WhatsApp number
+  const [isVisible, setIsVisible] = useState(false);
+  const phoneNumber = "919876543210";
+
+  useEffect(() => {
+    // Show chat icon after 3 seconds
+    const showTimer = setTimeout(() => {
+      setIsVisible(true);
+    }, 3000);
+
+    // Hide chat icon after 10 seconds if not interacted
+    const hideTimer = setTimeout(() => {
+      if (!isOpen) {
+        setIsVisible(false);
+      }
+    }, 10000);
+
+    return () => {
+      clearTimeout(showTimer);
+      clearTimeout(hideTimer);
+    };
+  }, [isOpen]);
 
   const toggleChat = () => {
     setIsOpen(!isOpen);
+    setIsVisible(true); // Keep visible once interacted
   };
 
   const handleWhatsAppRedirect = () => {
     const message = encodeURIComponent("Hello! I'm interested in Crich Constructions services.");
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   };
+
+  if (!isVisible) return null;
 
   return (
     <div className="fixed bottom-6 right-6 z-50">
@@ -49,7 +72,7 @@ const WhatsAppChat = () => {
       
       <button
         onClick={toggleChat}
-        className="bg-green-500 hover:bg-green-600 w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-105"
+        className="bg-green-500 hover:bg-green-600 w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-105 animate-scale-in"
         aria-label="WhatsApp Chat"
       >
         {isOpen ? (
