@@ -43,7 +43,7 @@ const Navbar = () => {
             <a href="#services" className={`font-medium transition-colors ${isScrolled ? 'text-buildacre-darkgray hover:text-buildacre-blue' : 'text-white hover:text-buildacre-orange'}`}>Services</a>
             <a href="#about" className={`font-medium transition-colors ${isScrolled ? 'text-buildacre-darkgray hover:text-buildacre-blue' : 'text-white hover:text-buildacre-orange'}`}>About</a>
             <a href="#projects" className={`font-medium transition-colors ${isScrolled ? 'text-buildacre-darkgray hover:text-buildacre-blue' : 'text-white hover:text-buildacre-orange'}`}>Projects</a>
-            <a href="#boq" className={`font-medium transition-colors ${isScrolled ? 'text-buildacre-darkgray hover:text-buildacre-blue' : 'text-white hover:text-buildacre-orange'}`}>BOQ</a>
+            <a href="/boq" className={`font-medium transition-colors ${isScrolled ? 'text-buildacre-darkgray hover:text-buildacre-blue' : 'text-white hover:text-buildacre-orange'}`}>BOQ</a>
             <a href="#testimonials" className={`font-medium transition-colors ${isScrolled ? 'text-buildacre-darkgray hover:text-buildacre-blue' : 'text-white hover:text-buildacre-orange'}`}>Testimonials</a>
             <a href="#contact" className="btn-primary">Contact Us</a>
           </div>
@@ -82,7 +82,7 @@ const Navbar = () => {
                 Projects
               </a>
               <a 
-                href="#boq" 
+                href="/boq" 
                 className="font-medium py-2 hover:text-buildacre-blue transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
