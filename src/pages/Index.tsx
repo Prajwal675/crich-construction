@@ -4,11 +4,13 @@ import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import ServicesSection from '../components/ServicesSection';
 import UspsSection from '../components/UspsSection';
+import HowItWorks from '../components/HowItWorks';
+import ProjectsSection from '../components/ProjectsSection';
+import SocialFeed from '../components/SocialFeed';
 import TestimonialsSection from '../components/TestimonialsSection';
 import ContactForm from '../components/ContactForm';
 import Footer from '../components/Footer';
 import MaterialSponsors from '../components/MaterialSponsors';
-import ProjectsSection from '../components/ProjectsSection';
 import WhatsAppChat from '../components/WhatsAppChat';
 
 const Index = () => {
@@ -35,7 +37,9 @@ const Index = () => {
         <Hero />
         <ServicesSection />
         <UspsSection />
+        <HowItWorks />
         <ProjectsSection />
+        <SocialFeed />
         <TestimonialsSection />
         <MaterialSponsors />
         <ContactForm />
