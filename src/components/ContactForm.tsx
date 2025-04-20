@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Check, Send, Phone, Mail, MapPin } from 'lucide-react';
 
@@ -94,17 +93,17 @@ const ContactForm = () => {
 
   return (
     <section id="contact" className="section-padding bg-gradient-to-b from-white to-buildacre-bg">
-      <div className="container mx-auto container-padding">
-        <div className="text-center mb-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:container-padding">
+        <div className="text-center mb-8 sm:mb-12">
           <h2 className="mb-4">Let's Discuss Your Project</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Fill out the form below, and our team will get back to you within 24 hours to discuss your construction needs.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-6xl mx-auto">
           {/* Contact Information */}
-          <div className="bg-buildacre-blue/95 text-white rounded-2xl p-8 shadow-lg flex flex-col justify-between">
+          <div className="bg-buildacre-blue/95 text-white rounded-2xl p-6 sm:p-8 shadow-lg flex flex-col justify-between">
             <div>
               <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
               <p className="mb-8 text-white/80">We're here to help with any questions about your construction project.</p>
@@ -158,7 +157,7 @@ const ContactForm = () => {
           {/* Contact Form */}
           <div>
             {isSubmitted ? (
-              <div className="bg-white rounded-2xl p-8 shadow-lg h-full flex flex-col items-center justify-center text-center">
+              <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg h-full flex flex-col items-center justify-center text-center">
                 <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-6">
                   <Check className="text-green-600" size={32} />
                 </div>
@@ -174,8 +173,8 @@ const ContactForm = () => {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-8 shadow-lg">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                   <div className="col-span-1">
                     <label htmlFor="name" className="block text-sm font-medium mb-1">
                       Full Name*
@@ -186,7 +185,7 @@ const ContactForm = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className={`w-full px-4 py-3 bg-gray-50 border rounded-md focus:ring-2 focus:ring-buildacre-blue focus:outline-none ${
+                      className={`w-full px-3 sm:px-4 py-2 sm:py-3 bg-gray-50 border rounded-md focus:ring-2 focus:ring-buildacre-blue focus:outline-none ${
                         errors.name ? 'border-red-500' : 'border-gray-200'
                       }`}
                       placeholder="Your name"
@@ -204,7 +203,7 @@ const ContactForm = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className={`w-full px-4 py-3 bg-gray-50 border rounded-md focus:ring-2 focus:ring-buildacre-blue focus:outline-none ${
+                      className={`w-full px-3 sm:px-4 py-2 sm:py-3 bg-gray-50 border rounded-md focus:ring-2 focus:ring-buildacre-blue focus:outline-none ${
                         errors.email ? 'border-red-500' : 'border-gray-200'
                       }`}
                       placeholder="Your email"
@@ -222,7 +221,7 @@ const ContactForm = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className={`w-full px-4 py-3 bg-gray-50 border rounded-md focus:ring-2 focus:ring-buildacre-blue focus:outline-none ${
+                      className={`w-full px-3 sm:px-4 py-2 sm:py-3 bg-gray-50 border rounded-md focus:ring-2 focus:ring-buildacre-blue focus:outline-none ${
                         errors.phone ? 'border-red-500' : 'border-gray-200'
                       }`}
                       placeholder="Your phone number"
@@ -239,7 +238,7 @@ const ContactForm = () => {
                       name="urgency"
                       value={formData.urgency}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-md focus:ring-2 focus:ring-buildacre-blue focus:outline-none appearance-none"
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-gray-50 border border-gray-200 rounded-md focus:ring-2 focus:ring-buildacre-blue focus:outline-none appearance-none"
                     >
                       {urgencyOptions.map(option => (
                         <option key={option} value={option}>
@@ -259,7 +258,7 @@ const ContactForm = () => {
                       value={formData.message}
                       onChange={handleChange}
                       rows={4}
-                      className={`w-full px-4 py-3 bg-gray-50 border rounded-md focus:ring-2 focus:ring-buildacre-blue focus:outline-none ${
+                      className={`w-full px-3 sm:px-4 py-2 sm:py-3 bg-gray-50 border rounded-md focus:ring-2 focus:ring-buildacre-blue focus:outline-none ${
                         errors.message ? 'border-red-500' : 'border-gray-200'
                       }`}
                       placeholder="Tell us about your project"
