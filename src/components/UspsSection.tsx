@@ -1,5 +1,7 @@
 import React from 'react';
 import { Check } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Button } from './ui/button';
 
 const usps = [
   {
@@ -55,6 +57,21 @@ const UspsSection = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-20 text-center">
+          <p className="text-2xl font-semibold text-buildacre-darkgray mb-8 animate-fade-in">
+            The collective strength behind our team's success
+          </p>
+          <Link to="/team">
+            <Button
+              variant="default"
+              size="lg"
+              className="bg-buildacre-blue hover:bg-buildacre-blue/90 text-white animate-fade-in"
+            >
+              Meet Our Team
+            </Button>
+          </Link>
         </div>
       </div>
     </section>
