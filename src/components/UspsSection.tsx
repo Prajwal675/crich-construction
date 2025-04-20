@@ -1,31 +1,30 @@
-
 import React from 'react';
 import { Check } from 'lucide-react';
 
 const usps = [
   {
+    title: "Well Defined BOQ",
+    description: "Detailed and transparent Bill of Quantities ensuring clarity in project scope and costs."
+  },
+  {
+    title: "Precise Quotation",
+    description: "Accurate and comprehensive cost estimates with no hidden charges or surprises."
+  },
+  {
     title: "Quality Craftsmanship",
-    description: "Superior materials and attention to detail in every project."
-  },
-  {
-    title: "On-Time Delivery",
-    description: "We honor our commitments and respect your timelines."
-  },
-  {
-    title: "Transparent Pricing",
-    description: "Clear, detailed quotes with no hidden costs or surprises."
+    description: "Exceptional workmanship delivered by skilled professionals who take pride in their craft."
   },
   {
     title: "Experienced Team",
-    description: "Our experts bring 20+ years of industry knowledge to your project."
+    description: "Seasoned professionals with extensive industry knowledge and proven expertise."
   },
   {
-    title: "Sustainable Practices",
-    description: "Eco-friendly construction methods and materials wherever possible."
+    title: "Client-Centric Approach",
+    description: "Tailored solutions driven by your unique needs and preferences, ensuring complete satisfaction."
   },
   {
-    title: "Customer Satisfaction",
-    description: "Your happiness is our priority, with 98% client satisfaction."
+    title: "Client Empowerment",
+    description: "Keeping you informed and involved throughout the project, enabling confident decision-making."
   }
 ];
 
@@ -36,7 +35,7 @@ const UspsSection = () => {
         <div className="text-center mb-16">
           <h2 className="mb-4">What Sets Us Apart</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            At BuildAcre, we deliver more than just construction – we deliver excellence through these core values.
+            At CRICH BUILDERS, we deliver excellence through these core values and commitments.
           </p>
         </div>
 

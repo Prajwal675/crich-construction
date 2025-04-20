@@ -8,6 +8,9 @@ const urgencyOptions = [
   "Just exploring options"
 ];
 
+// Replace this URL with your Google Apps Script deployment URL
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz2xEVA20vRbAeNlNEkzZLhMUoX22mFhmqlGyiXBU5lH5zqIxdpH-2L38GTjkIdWDk/exec'; // Replace this with the URL you copied
+
 const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -61,19 +64,30 @@ const ContactForm = () => {
     setFormData(prev => ({ ...prev, [name]: checked }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (validateForm()) {
       setIsSubmitting(true);
       
-      // Simulate API call
-      setTimeout(() => {
-        console.log('Form submitted:', formData);
-        setIsSubmitting(false);
+      try {
+        await fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            urgency: formData.urgency,
+            message: formData.message
+          })
+        });
+
+        // If we reach here, assume success since no-cors won't give us response details
         setIsSubmitted(true);
-        
-        // Reset form after successful submission
         setFormData({
           name: '',
           email: '',
@@ -83,11 +97,15 @@ const ContactForm = () => {
           acceptPolicy: false
         });
         
-        // Reset submission status after 5 seconds
         setTimeout(() => {
           setIsSubmitted(false);
         }, 5000);
-      }, 1500);
+      } catch (error) {
+        console.error('Failed to send message:', error);
+        alert('Failed to send message. Please try again later.');
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
@@ -174,9 +192,9 @@ const ContactForm = () => {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                  <div className="col-span-1">
-                    <label htmlFor="name" className="block text-sm font-medium mb-1">
+                <div className="flex flex-col gap-5">
+                  <div className="w-full">
+                    <label htmlFor="name" className="block text-base font-medium mb-2">
                       Full Name*
                     </label>
                     <input
@@ -185,7 +203,7 @@ const ContactForm = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className={`w-full px-3 sm:px-4 py-2 sm:py-3 bg-gray-50 border rounded-md focus:ring-2 focus:ring-buildacre-blue focus:outline-none ${
+                      className={`w-full h-12 px-4 bg-gray-50 border rounded-md focus:ring-2 focus:ring-buildacre-blue focus:outline-none text-base ${
                         errors.name ? 'border-red-500' : 'border-gray-200'
                       }`}
                       placeholder="Your name"
@@ -193,8 +211,8 @@ const ContactForm = () => {
                     {errors.name && <p className="mt-1 text-red-500 text-sm">{errors.name}</p>}
                   </div>
 
-                  <div className="col-span-1">
-                    <label htmlFor="email" className="block text-sm font-medium mb-1">
+                  <div className="w-full">
+                    <label htmlFor="email" className="block text-base font-medium mb-2">
                       Email Address*
                     </label>
                     <input
@@ -203,7 +221,7 @@ const ContactForm = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className={`w-full px-3 sm:px-4 py-2 sm:py-3 bg-gray-50 border rounded-md focus:ring-2 focus:ring-buildacre-blue focus:outline-none ${
+                      className={`w-full h-12 px-4 bg-gray-50 border rounded-md focus:ring-2 focus:ring-buildacre-blue focus:outline-none text-base ${
                         errors.email ? 'border-red-500' : 'border-gray-200'
                       }`}
                       placeholder="Your email"
@@ -211,8 +229,8 @@ const ContactForm = () => {
                     {errors.email && <p className="mt-1 text-red-500 text-sm">{errors.email}</p>}
                   </div>
 
-                  <div className="col-span-1">
-                    <label htmlFor="phone" className="block text-sm font-medium mb-1">
+                  <div className="w-full">
+                    <label htmlFor="phone" className="block text-base font-medium mb-2">
                       Phone Number*
                     </label>
                     <input
@@ -221,7 +239,7 @@ const ContactForm = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className={`w-full px-3 sm:px-4 py-2 sm:py-3 bg-gray-50 border rounded-md focus:ring-2 focus:ring-buildacre-blue focus:outline-none ${
+                      className={`w-full h-12 px-4 bg-gray-50 border rounded-md focus:ring-2 focus:ring-buildacre-blue focus:outline-none text-base ${
                         errors.phone ? 'border-red-500' : 'border-gray-200'
                       }`}
                       placeholder="Your phone number"
@@ -229,8 +247,8 @@ const ContactForm = () => {
                     {errors.phone && <p className="mt-1 text-red-500 text-sm">{errors.phone}</p>}
                   </div>
 
-                  <div className="col-span-1">
-                    <label htmlFor="urgency" className="block text-sm font-medium mb-1">
+                  <div className="w-full">
+                    <label htmlFor="urgency" className="block text-base font-medium mb-2">
                       Project Urgency
                     </label>
                     <select
@@ -238,7 +256,7 @@ const ContactForm = () => {
                       name="urgency"
                       value={formData.urgency}
                       onChange={handleChange}
-                      className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-gray-50 border border-gray-200 rounded-md focus:ring-2 focus:ring-buildacre-blue focus:outline-none appearance-none"
+                      className="w-full h-12 px-4 bg-gray-50 border border-gray-200 rounded-md focus:ring-2 focus:ring-buildacre-blue focus:outline-none text-base appearance-none"
                     >
                       {urgencyOptions.map(option => (
                         <option key={option} value={option}>
@@ -248,8 +266,8 @@ const ContactForm = () => {
                     </select>
                   </div>
 
-                  <div className="col-span-2">
-                    <label htmlFor="message" className="block text-sm font-medium mb-1">
+                  <div className="w-full">
+                    <label htmlFor="message" className="block text-base font-medium mb-2">
                       Your Message*
                     </label>
                     <textarea
@@ -258,7 +276,7 @@ const ContactForm = () => {
                       value={formData.message}
                       onChange={handleChange}
                       rows={4}
-                      className={`w-full px-3 sm:px-4 py-2 sm:py-3 bg-gray-50 border rounded-md focus:ring-2 focus:ring-buildacre-blue focus:outline-none ${
+                      className={`w-full p-4 bg-gray-50 border rounded-md focus:ring-2 focus:ring-buildacre-blue focus:outline-none text-base ${
                         errors.message ? 'border-red-500' : 'border-gray-200'
                       }`}
                       placeholder="Tell us about your project"
@@ -266,7 +284,7 @@ const ContactForm = () => {
                     {errors.message && <p className="mt-1 text-red-500 text-sm">{errors.message}</p>}
                   </div>
 
-                  <div className="col-span-2">
+                  <div className="w-full">
                     <div className="flex items-start">
                       <input
                         type="checkbox"
@@ -274,9 +292,9 @@ const ContactForm = () => {
                         name="acceptPolicy"
                         checked={formData.acceptPolicy}
                         onChange={handleCheckboxChange}
-                        className="mt-1 h-4 w-4 text-buildacre-blue rounded focus:ring-buildacre-blue"
+                        className="mt-1 h-5 w-5 text-buildacre-blue rounded focus:ring-buildacre-blue"
                       />
-                      <label htmlFor="acceptPolicy" className="ml-2 text-sm">
+                      <label htmlFor="acceptPolicy" className="ml-3 text-sm">
                         I agree to the{" "}
                         <a href="#" className="text-buildacre-blue hover:underline">
                           privacy policy
@@ -294,7 +312,7 @@ const ContactForm = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full btn-primary flex justify-center items-center"
+                    className="w-full h-12 btn-primary flex justify-center items-center"
                   >
                     {isSubmitting ? (
                       <>

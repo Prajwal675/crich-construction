@@ -1,26 +1,36 @@
-
 import React from 'react';
+import house1 from '../assets/house1.jpg';
+import h2 from '../assets/h2.jpg';
+import interiorImg from '../assets/services/interior.jpg';
+import commercialImg from '../assets/services/commercial.jpg';
+import infrastructureImg from '../assets/services/infrastructure.jpg';
+import renovationImg from '../assets/services/renovation.jpg';
 
 const services = [
   {
     title: "Residential Construction",
-    description: "We create beautiful, functional homes tailored to your lifestyle and preferences. From custom builds to renovations.",
-    image: "https://images.unsplash.com/photo-1510627498534-cf7e9002facc?auto=format&fit=crop&q=80"
+    description: "Expert construction of homes and residential complexes with meticulous attention to detail and quality craftsmanship.",
+    image: house1
   },
   {
-    title: "Commercial Buildings",
-    description: "Office spaces, retail outlets, or industrial facilities built to the highest standards with attention to functionality and aesthetics.",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80"
+    title: "Interior Designs",
+    description: "Innovative interior design solutions that blend aesthetics with functionality to create stunning living and working spaces.",
+    image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1200&h=800"
+  },
+  {
+    title: "Commercial Construction",
+    description: "Professional construction of commercial spaces, from office buildings to retail complexes, built to the highest industry standards.",
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200&h=800"
   },
   {
     title: "Infrastructure Projects",
-    description: "Roads, bridges, and public facilities constructed with durability and public safety as our primary focus.",
-    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80"
+    description: "Development of robust infrastructure projects with a focus on durability, safety, and long-term value.",
+    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=1200&h=800"
   },
   {
     title: "Renovations",
-    description: "Breathe new life into existing structures through our expert renovation and remodeling services.",
-    image: "https://images.unsplash.com/photo-1581235720704-06d3acfcb85f?auto=format&fit=crop&q=80"
+    description: "Expert renovation services to transform and modernize existing structures while preserving their core character.",
+    image: h2
   }
 ];
 
@@ -31,11 +41,11 @@ const ServicesSection = () => {
         <div className="text-center mb-16">
           <h2 className="mb-4">Our Expert Services</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            We offer comprehensive construction services tailored to meet your specific needs and expectations.
+            We offer comprehensive construction and design services tailored to meet your specific needs and expectations.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <div 
               key={index} 
@@ -46,6 +56,10 @@ const ServicesSection = () => {
                   src={service.image} 
                   alt={service.title} 
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200&h=800";
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-60"></div>
               </div>
