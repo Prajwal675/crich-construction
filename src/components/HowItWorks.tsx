@@ -1,5 +1,7 @@
 
 import React from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { ChevronRight } from "lucide-react";
 
 const steps = [
   {
@@ -29,47 +31,80 @@ const steps = [
 ];
 
 const HowItWorks = () => {
+  const isMobile = useIsMobile();
+
   return (
-    <section className="section-padding bg-white relative">
+    <section className="section-padding bg-white relative overflow-hidden">
       <div className="container mx-auto container-padding">
-        <div className="text-center mb-12">
+        <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-3 bg-gradient-to-r from-buildacre-blue via-buildacre-orange to-buildacre-blue inline-block text-transparent bg-clip-text animate-fade-in">How it Works</h2>
           <p className="text-muted-foreground max-w-xl mx-auto animate-fade-in">A modern, transparent journey from your first call to completion.</p>
         </div>
-        {/* Timeline */}
-        <div className="relative">
-          {/* Timeline bar (vertical on mobile, horizontal on desktop) */}
-          <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-10 bottom-10 w-1 bg-gradient-to-b from-buildacre-blue/20 via-buildacre-orange/30 to-buildacre-blue/10 pointer-events-none z-0" />
-          <div className="md:hidden absolute left-6 top-16 bottom-10 w-1 bg-gradient-to-b from-buildacre-blue/20 via-buildacre-orange/30 to-buildacre-blue/10 pointer-events-none z-0" />
-          <ul className="flex flex-col md:flex-row md:justify-between gap-8 relative z-10">
+        
+        {/* Desktop view */}
+        <div className="hidden md:block relative">
+          {/* Background decorative elements */}
+          <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-1 bg-gradient-to-b from-buildacre-blue/20 via-buildacre-orange/30 to-buildacre-blue/10"></div>
+          
+          <div className="grid grid-cols-2 gap-12">
             {steps.map((step, idx) => (
-              <li
-                key={idx}
-                className={`flex md:block items-center relative animate-fade-in`}
-                style={{ animationDelay: `${idx * 120}ms` }}
+              <div 
+                key={idx} 
+                className={`${idx % 2 === 0 ? "mr-auto text-right" : "ml-auto text-left"} 
+                           max-w-sm relative p-6 rounded-lg animate-fade-in bg-white shadow-md hover:shadow-lg transition-shadow duration-300
+                           ${idx % 2 === 0 ? "pr-12" : "pl-12"}`}
+                style={{ animationDelay: `${idx * 100}ms` }}
               >
-                {/* Step circle & connector */}
-                <div className="flex flex-col items-center md:items-center md:mb-6 relative z-20">
-                  <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg shadow-lg bg-gradient-to-tr from-buildacre-orange via-buildacre-blue to-buildacre-orange text-white border-4 border-white transition-transform duration-300 hover:scale-110`}>
+                {/* Step connector */}
+                <div className={`absolute top-1/2 -translate-y-1/2 ${idx % 2 === 0 ? "right-0 translate-x-1/2" : "left-0 -translate-x-1/2"}`}>
+                  <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg shadow-lg 
+                                 bg-gradient-to-tr from-buildacre-orange via-buildacre-blue to-buildacre-orange text-white border-4 border-white
+                                 transition-transform duration-300 hover:scale-110`}>
                     {idx + 1}
                   </div>
-                  {/* Desktop connector */}
-                  {idx < steps.length - 1 && (
-                    <div className="hidden md:block absolute left-1/2 top-full w-1 h-14 bg-gradient-to-b from-buildacre-blue via-buildacre-orange to-buildacre-blue z-0" />
-                  )}
-                  {/* Mobile connector */}
-                  {idx < steps.length - 1 && (
-                    <div className="md:hidden w-1 h-8 bg-gradient-to-b from-buildacre-orange via-buildacre-blue to-buildacre-orange mt-2 z-0" />
-                  )}
                 </div>
-                {/* Content */}
-                <div className="ml-4 md:ml-0 md:text-center mt-0 md:mt-0 max-w-xs">
-                  <h3 className="text-lg md:text-xl font-semibold mb-1 text-buildacre-blue">{step.title}</h3>
-                  <p className="text-muted-foreground text-sm md:text-base">{step.description}</p>
-                </div>
-              </li>
+                
+                <h3 className={`text-xl font-semibold mb-2 text-buildacre-blue ${idx % 2 === 0 ? "text-right" : "text-left"}`}>
+                  {step.title}
+                </h3>
+                <p className={`text-muted-foreground ${idx % 2 === 0 ? "text-right" : "text-left"}`}>
+                  {step.description}
+                </p>
+              </div>
             ))}
-          </ul>
+          </div>
+        </div>
+        
+        {/* Mobile view */}
+        <div className="md:hidden relative">
+          {/* Timeline line */}
+          <div className="absolute left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-buildacre-blue/20 via-buildacre-orange/30 to-buildacre-blue/10"></div>
+          
+          <div className="space-y-8">
+            {steps.map((step, idx) => (
+              <div 
+                key={idx}
+                className="flex items-start ml-8 animate-fade-in"
+                style={{ animationDelay: `${idx * 100}ms` }}
+              >
+                {/* Step number */}
+                <div className="absolute left-4 -translate-x-1/2 mt-1">
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-white bg-gradient-to-tr from-buildacre-orange via-buildacre-blue to-buildacre-orange shadow-md border-2 border-white transition-transform duration-300 hover:scale-110">
+                    {idx + 1}
+                  </div>
+                </div>
+                
+                {/* Step content */}
+                <div className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 w-full">
+                  <div className="flex items-center mb-2">
+                    <h3 className="text-lg font-semibold text-buildacre-blue">{step.title}</h3>
+                    <ChevronRight size={18} className="ml-2 text-buildacre-orange" />
+                  </div>
+                  <p className="text-muted-foreground text-sm">{step.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -77,4 +112,3 @@ const HowItWorks = () => {
 };
 
 export default HowItWorks;
-
