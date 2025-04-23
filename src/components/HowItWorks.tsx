@@ -1,33 +1,26 @@
 
 import React from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { ChevronRight } from "lucide-react";
 
 const steps = [
   {
-    title: "Book an Engineer",
-    description: "Schedule a consultation with our expert engineers."
+    label: "Book an Engineer Appointment",
   },
   {
-    title: "One-to-One Discussion",
-    description: "Discuss your requirements personally for tailored solutions."
+    label: "One-to-One Discussion",
   },
   {
-    title: "Transparent Quotation",
-    description: "Get clear pricing and a detailed cost estimate."
+    label: "Get a Quotation as per Your Requirement",
   },
   {
-    title: "Project Visits",
-    description: "Experience our past/impressive work up close."
+    label: "Visit Our Projects",
   },
   {
-    title: "Client References",
-    description: "Connect with our happy clients for genuine feedback."
+    label: "Talk to Our Existing and Previous Clients",
   },
   {
-    title: "Finalize & Build",
-    description: "Begin your construction journey with us."
-  }
+    label: "Finalize the Deal",
+  },
 ];
 
 const HowItWorks = () => {
@@ -36,75 +29,60 @@ const HowItWorks = () => {
   return (
     <section className="section-padding bg-white relative overflow-hidden">
       <div className="container mx-auto container-padding">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-3 bg-gradient-to-r from-buildacre-blue via-buildacre-orange to-buildacre-blue inline-block text-transparent bg-clip-text animate-fade-in">How it Works</h2>
-          <p className="text-muted-foreground max-w-xl mx-auto animate-fade-in">A modern, transparent journey from your first call to completion.</p>
+        <div className="text-center mb-10">
+          <h2 className="text-4xl font-bold mb-3 bg-gradient-to-r from-buildacre-blue via-buildacre-orange to-buildacre-blue inline-block text-transparent bg-clip-text animate-fade-in">
+            How it works
+          </h2>
+          <p className="text-muted-foreground max-w-xl mx-auto animate-fade-in font-medium">
+            Our house construction steps are simple and transparent: <span className="font-bold text-buildacre-blue">Plan – Discuss – Quote – Verify – Finalize.</span>
+          </p>
         </div>
-        
-        {/* Desktop view */}
-        <div className="hidden md:block relative">
-          {/* Background decorative elements */}
-          <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-1 bg-gradient-to-b from-buildacre-blue/20 via-buildacre-orange/30 to-buildacre-blue/10"></div>
-          
-          <div className="grid grid-cols-2 gap-12">
+        {/* Desktop & Tablet Horizontal Timeline */}
+        <div className="hidden md:flex md:flex-col md:items-center w-full relative">
+          <div className="w-full flex flex-row justify-between items-start relative">
             {steps.map((step, idx) => (
-              <div 
-                key={idx} 
-                className={`${idx % 2 === 0 ? "mr-auto text-right" : "ml-auto text-left"} 
-                           max-w-sm relative p-6 rounded-lg animate-fade-in bg-white shadow-md hover:shadow-lg transition-shadow duration-300
-                           ${idx % 2 === 0 ? "pr-12" : "pl-12"}`}
-                style={{ animationDelay: `${idx * 100}ms` }}
-              >
-                {/* Step connector */}
-                <div className={`absolute top-1/2 -translate-y-1/2 ${idx % 2 === 0 ? "right-0 translate-x-1/2" : "left-0 -translate-x-1/2"}`}>
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg shadow-lg 
-                                 bg-gradient-to-tr from-buildacre-orange via-buildacre-blue to-buildacre-orange text-white border-4 border-white
-                                 transition-transform duration-300 hover:scale-110`}>
+              <div key={idx} className="flex flex-col items-center flex-1 min-w-[110px]">
+                <div className="relative flex flex-col items-center z-10">
+                  <div
+                    className="w-16 h-16 flex items-center justify-center rounded-full bg-white shadow-md border border-buildacre-blue text-3xl font-bold text-buildacre-blue transition-all duration-200"
+                  >
                     {idx + 1}
                   </div>
+                  {/* Connector - hide for last item */}
+                  {idx < steps.length - 1 && (
+                    <div
+                      className="absolute right-0 top-1/2 w-full h-2"
+                      style={{
+                        left: "100%",
+                        width: "calc(100% + 32px)",
+                        zIndex: 1,
+                        pointerEvents: "none",
+                      }}
+                    >
+                      <svg height="20" width="100%" className="mx-2 md:block" style={{ minWidth: 80 }}>
+                        <line x1="0" y1="10" x2="100%" y2="10" stroke="#b3c6e0" strokeDasharray="7,8" strokeWidth="2" />
+                      </svg>
+                    </div>
+                  )}
                 </div>
-                
-                <h3 className={`text-xl font-semibold mb-2 text-buildacre-blue ${idx % 2 === 0 ? "text-right" : "text-left"}`}>
-                  {step.title}
-                </h3>
-                <p className={`text-muted-foreground ${idx % 2 === 0 ? "text-right" : "text-left"}`}>
-                  {step.description}
-                </p>
+                {/* Step Text */}
+                <div className="mt-5 text-center max-w-xs">
+                  <div className="text-base md:text-lg font-semibold mb-2 text-buildacre-darkgray">{step.label}</div>
+                </div>
               </div>
             ))}
           </div>
         </div>
-        
-        {/* Mobile view */}
-        <div className="md:hidden relative">
-          {/* Timeline line */}
-          <div className="absolute left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-buildacre-blue/20 via-buildacre-orange/30 to-buildacre-blue/10"></div>
-          
-          <div className="space-y-8">
-            {steps.map((step, idx) => (
-              <div 
-                key={idx}
-                className="flex items-start ml-8 animate-fade-in"
-                style={{ animationDelay: `${idx * 100}ms` }}
-              >
-                {/* Step number */}
-                <div className="absolute left-4 -translate-x-1/2 mt-1">
-                  <div className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-white bg-gradient-to-tr from-buildacre-orange via-buildacre-blue to-buildacre-orange shadow-md border-2 border-white transition-transform duration-300 hover:scale-110">
-                    {idx + 1}
-                  </div>
-                </div>
-                
-                {/* Step content */}
-                <div className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 w-full">
-                  <div className="flex items-center mb-2">
-                    <h3 className="text-lg font-semibold text-buildacre-blue">{step.title}</h3>
-                    <ChevronRight size={18} className="ml-2 text-buildacre-orange" />
-                  </div>
-                  <p className="text-muted-foreground text-sm">{step.description}</p>
-                </div>
+        {/* Mobile Vertical Timeline */}
+        <div className="md:hidden flex flex-col gap-5 w-full mt-3">
+          {steps.map((step, idx) => (
+            <div key={idx} className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-full bg-white shadow border border-buildacre-blue text-buildacre-blue flex items-center justify-center text-2xl font-bold shrink-0">
+                {idx + 1}
               </div>
-            ))}
-          </div>
+              <span className="text-base font-semibold text-buildacre-darkgray">{step.label}</span>
+            </div>
+          ))}
         </div>
       </div>
     </section>
