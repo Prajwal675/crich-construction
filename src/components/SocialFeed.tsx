@@ -31,7 +31,7 @@ const posts = [
 ];
 
 const SocialFeed = () => {
-  const instagramUrl = "https://www.instagram.com/buildacre/";
+  //const instagramUrl = "https://www.instagram.com/buildacre/";
 
   return (
     <section className="section-padding bg-buildacre-bg">
@@ -44,7 +44,7 @@ const SocialFeed = () => {
           <Button 
             variant="default"
             size="lg"
-            onClick={() => window.open(instagramUrl, '_blank')}
+            //onClick={() => window.open(instagramUrl, '_blank')}
             className="bg-buildacre-orange hover:bg-buildacre-orange/90"
           >
             <Instagram className="mr-2 h-5 w-5" />
