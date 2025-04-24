@@ -9,8 +9,8 @@ const urgencyOptions = [
   "Just exploring options"
 ];
 
-// Replace this URL with your Google Apps Script deployment URL
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz2xEVA20vRbAeNlNEkzZLhMUoX22mFhmqlGyiXBU5lH5zqIxdpH-2L38GTjkIdWDk/exec'; // Replace this with the URL you copied
+// Formspree endpoint URL from Vite environment variable
+const FORMSPREE_URL = import.meta.env.VITE_FORMSPREE_URL as string;
 
 const ContactForm = () => {
   const isMobile = useIsMobile();
@@ -73,9 +73,8 @@ const ContactForm = () => {
       setIsSubmitting(true);
       
       try {
-        await fetch(GOOGLE_SCRIPT_URL, {
+        const response = await fetch(FORMSPREE_URL, {
           method: 'POST',
-          mode: 'no-cors',
           headers: {
             'Content-Type': 'application/json',
           },
@@ -88,20 +87,22 @@ const ContactForm = () => {
           })
         });
 
-        // If we reach here, assume success since no-cors won't give us response details
-        setIsSubmitted(true);
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          urgency: 'Immediately',
-          message: '',
-          acceptPolicy: false
-        });
-        
-        setTimeout(() => {
-          setIsSubmitted(false);
-        }, 5000);
+        if (response.ok) {
+          setIsSubmitted(true);
+          setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            urgency: 'Immediately',
+            message: '',
+            acceptPolicy: false
+          });
+          setTimeout(() => {
+            setIsSubmitted(false);
+          }, 5000);
+        } else {
+          alert('Failed to send message. Please try again later.');
+        }
       } catch (error) {
         console.error('Failed to send message:', error);
         alert('Failed to send message. Please try again later.');

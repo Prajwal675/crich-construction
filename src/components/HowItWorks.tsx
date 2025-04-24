@@ -60,30 +60,44 @@ const HowItWorks = () => {
           </p>
         </div>
 
-        {/* Desktop Layout */}
-        <div className="hidden md:flex justify-center relative">
-          <div className="absolute left-0 top-1/2 w-full h-2 flex items-center z-0">
-            <div className="w-full h-2 bg-gradient-to-r from-buildacre-blue via-buildacre-orange to-buildacre-blue rounded animate-fade-in" />
+        {/* Desktop Layout - Enhanced */}
+        <div className="hidden md:flex justify-center relative min-h-[340px]">
+          {/* Decorative background lines */}
+          <div className="absolute left-0 top-1/2 w-full h-1 flex items-center z-0">
+            <div className="w-full h-1 bg-gradient-to-r from-blue-200 via-orange-100 to-yellow-100 rounded-full opacity-70" />
           </div>
-          <div className="flex w-full gap-4 justify-between items-center relative z-10">
+          <div className="flex w-full gap-8 justify-between items-end relative z-10">
             {steps.map((step, idx) => (
-              <div key={step.label} className="flex-1 flex flex-col items-center relative group">
-                <div 
-                  className={`w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center shadow-lg border-4 border-white z-20 
+              <div
+                key={step.label}
+                className={`flex-1 flex flex-col items-center relative group transition-all duration-300 ${idx % 2 === 0 ? 'mt-0' : 'mt-12'}`}
+                style={{ zIndex: 10 + steps.length - idx }}
+              >
+                {/* Animated Icon/Number */}
+                <div
+                  className={`w-16 h-16 rounded-full flex items-center justify-center shadow-xl border-4 border-white z-20
                   bg-gradient-to-tr from-buildacre-blue via-buildacre-orange to-yellow-300
-                  text-white font-bold text-xl md:text-2xl 
-                  transition-transform duration-300 group-hover:scale-110 animate-fade-in`}
+                  text-white font-extrabold text-2xl transition-transform duration-300 group-hover:scale-110 animate-fade-in`}
                   style={{ animationDelay: `${idx * 80}ms` }}
                 >
                   {idx + 1}
                 </div>
-                <div 
-                  className="mt-3 bg-white rounded-xl shadow-xl px-4 py-3 w-40 md:w-48 flex flex-col items-center relative animate-fade-in"
+                {/* Card */}
+                <div
+                  className="mt-4 bg-white/90 backdrop-blur-xl rounded-2xl shadow-2xl px-6 py-5 w-48 flex flex-col items-center border border-blue-50 hover:shadow-3xl hover:scale-105 transition-all duration-300 animate-fade-in"
                   style={{ animationDelay: `${idx * 100 + 120}ms` }}
                 >
-                  <div className="text-base font-semibold text-buildacre-blue mb-1 text-center">{step.label}</div>
-                  <div className="text-xs text-gray-500 text-center">{step.caption}</div>
+                  <div className="text-lg font-bold text-buildacre-blue mb-1 text-center tracking-tight drop-shadow-sm">
+                    {step.label}
+                  </div>
+                  <div className="text-sm text-gray-500 text-center font-medium">
+                    {step.caption}
+                  </div>
                 </div>
+                {/* Decorative connector dot */}
+                {idx < steps.length - 1 && (
+                  <div className="absolute right-0 left-0 mx-auto top-1/2 w-4 h-4 bg-gradient-to-tr from-buildacre-orange to-buildacre-blue rounded-full opacity-40 -z-10" style={{ marginTop: '110px' }} />
+                )}
               </div>
             ))}
           </div>
