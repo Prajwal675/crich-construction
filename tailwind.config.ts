@@ -1,5 +1,6 @@
 
 import type { Config } from "tailwindcss";
+import animate from "tailwindcss-animate";
 
 export default {
 	darkMode: ["class"],
@@ -71,7 +72,7 @@ export default {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			fontFamily: {
-				sans: ['Inter', 'sans-serif'],
+				sans: ['Quicksand', 'Inter', 'sans-serif'],
 			},
 			keyframes: {
 				'accordion-down': {
@@ -99,5 +100,5 @@ export default {
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [animate],
 } satisfies Config;
