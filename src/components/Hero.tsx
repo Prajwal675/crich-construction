@@ -21,11 +21,11 @@ const Hero = () => {
 
       <div className="container mx-auto container-padding relative z-10">
         <div className="max-w-3xl">
-          <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 font-sans">
+          <h1 className="text-5xl md:text-7xl font-display font-bold text-white mb-6 leading-tight">
             Rise and shine together
-            <span className="block text-buildacre-orange">with quality construction</span>
+            <span className="block text-buildacre-orange font-display font-semibold">with quality construction</span>
           </h1>
-          <p className="text-xl text-white/90 mb-8 max-w-xl font-sans">
+          <p className="text-lg md:text-xl text-white/80 mb-8 max-w-2xl font-sans font-light leading-relaxed">
             Our path at CRICH BUILDERS is intertwined with a love of building and an uncompromising dedication to our clients, resulting in a legacy of structures that serve as evidence of our proficiency
           </p>
           <a 
