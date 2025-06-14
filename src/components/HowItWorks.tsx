@@ -1,137 +1,112 @@
-
 import React from "react";
-import { useIsMobile } from "@/hooks/use-mobile";
+import { CheckCircle, ArrowRight } from "lucide-react";
 
-// Slightly reduced steps to fit better in the frame
 const steps = [
   {
-    label: "Book Consultation",
-    caption: "Easy scheduling",
+    number: "01",
+    title: "Initial Consultation",
+    description: "We discuss your vision, requirements, and project scope to understand your needs perfectly.",
+    icon: "📋"
   },
   {
-    label: "Detailed Discussion",
-    caption: "In-depth project review",
+    number: "02", 
+    title: "Design & Planning",
+    description: "Our experts create detailed plans and designs tailored to your specifications and budget.",
+    icon: "🏗️"
   },
   {
-    label: "Custom Quotation",
-    caption: "Tailored pricing",
+    number: "03",
+    title: "Material Selection",
+    description: "Choose from premium quality materials with our guidance to ensure durability and aesthetics.",
+    icon: "🧱"
   },
   {
-    label: "Project Showcase",
-    caption: "Quality demonstration",
+    number: "04",
+    title: "Construction",
+    description: "Professional execution with regular updates and quality checks throughout the building process.",
+    icon: "🔨"
   },
   {
-    label: "Client Testimonials",
-    caption: "Real experiences",
+    number: "05",
+    title: "Quality Assurance",
+    description: "Thorough inspection and testing to ensure everything meets our high standards.",
+    icon: "✅"
   },
   {
-    label: "Partnership Initiation",
-    caption: "Start your journey",
+    number: "06",
+    title: "Project Handover",
+    description: "Final walkthrough and documentation handover with ongoing support and warranty.",
+    icon: "🏠"
   }
 ];
 
-function BlobBg() {
-  return (
-    <div
-      aria-hidden="true"
-      className="pointer-events-none absolute left-0 top-16 w-full h-[280px] overflow-hidden z-0"
-      style={{ filter: "blur(60px)", opacity: 0.18 }}
-    >
-      <div className="w-[60vw] h-[180px] mx-auto rounded-full bg-gradient-to-tr from-buildacre-blue via-blue-200 to-buildacre-orange opacity-80 scale-110 animate-fade-in" />
-    </div>
-  );
-}
-
 const HowItWorks = () => {
-  const isMobile = useIsMobile();
-
   return (
-    <section className="relative py-12 md:py-16 bg-white overflow-x-clip">
-      <BlobBg />
-
-      <div className="relative z-10 container mx-auto container-padding">
-        {/* Section Title */}
-        <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-buildacre-blue via-buildacre-orange to-buildacre-blue inline-block text-transparent bg-clip-text animate-fade-in">
-            How it works
+    <section className="section-padding bg-gradient-to-br from-buildacre-bg to-white">
+      <div className="container mx-auto container-padding">
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-buildacre-darkgray mb-6">
+            How We <span className="text-buildacre-orange">Build Your Dreams</span>
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto animate-fade-in font-medium text-sm md:text-base">
-            A seamless journey from your vision to reality. We empower you every step of the way.
+          <p className="text-lg text-muted-foreground font-sans leading-relaxed">
+            From concept to completion, our streamlined process ensures quality, transparency, and your complete satisfaction at every step.
           </p>
         </div>
 
-        {/* Desktop Layout - Enhanced */}
-        <div className="hidden md:flex justify-center relative min-h-[340px]">
-          {/* Decorative background lines */}
-          <div className="absolute left-0 top-1/2 w-full h-1 flex items-center z-0">
-            <div className="w-full h-1 bg-gradient-to-r from-blue-200 via-orange-100 to-yellow-100 rounded-full opacity-70" />
-          </div>
-          <div className="flex w-full gap-8 justify-between items-end relative z-10">
-            {steps.map((step, idx) => (
-              <div
-                key={step.label}
-                className={`flex-1 flex flex-col items-center relative group transition-all duration-300 ${idx % 2 === 0 ? 'mt-0' : 'mt-12'}`}
-                style={{ zIndex: 10 + steps.length - idx }}
-              >
-                {/* Animated Icon/Number */}
-                <div
-                  className={`w-16 h-16 rounded-full flex items-center justify-center shadow-xl border-4 border-white z-20
-                  bg-gradient-to-tr from-buildacre-blue via-buildacre-orange to-yellow-300
-                  text-white font-extrabold text-2xl transition-transform duration-300 group-hover:scale-110 animate-fade-in`}
-                  style={{ animationDelay: `${idx * 80}ms` }}
-                >
-                  {idx + 1}
+        {/* Steps Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          {steps.map((step, index) => (
+            <div 
+              key={step.number}
+              className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-buildacre-orange/20"
+            >
+              {/* Step Number */}
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-12 bg-buildacre-blue text-white rounded-full flex items-center justify-center font-display font-bold text-lg">
+                  {step.number}
                 </div>
-                {/* Card */}
-                <div
-                  className="mt-4 bg-white/90 backdrop-blur-xl rounded-2xl shadow-2xl px-6 py-5 w-48 flex flex-col items-center border border-blue-50 hover:shadow-3xl hover:scale-105 transition-all duration-300 animate-fade-in"
-                  style={{ animationDelay: `${idx * 100 + 120}ms` }}
-                >
-                  <div className="text-lg font-bold text-buildacre-blue mb-1 text-center tracking-tight drop-shadow-sm">
-                    {step.label}
-                  </div>
-                  <div className="text-sm text-gray-500 text-center font-medium">
-                    {step.caption}
-                  </div>
-                </div>
-                {/* Decorative connector dot */}
-                {idx < steps.length - 1 && (
-                  <div className="absolute right-0 left-0 mx-auto top-1/2 w-4 h-4 bg-gradient-to-tr from-buildacre-orange to-buildacre-blue rounded-full opacity-40 -z-10" style={{ marginTop: '110px' }} />
-                )}
+                <div className="text-4xl">{step.icon}</div>
               </div>
-            ))}
-          </div>
+
+              {/* Content */}
+              <h3 className="text-xl font-display font-semibold text-buildacre-darkgray mb-4">
+                {step.title}
+              </h3>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                {step.description}
+              </p>
+
+              {/* Arrow for flow indication */}
+              {index < steps.length - 1 && (
+                <div className="hidden lg:block absolute -right-4 top-1/2 transform -translate-y-1/2 text-buildacre-orange opacity-60">
+                  <ArrowRight size={24} />
+                </div>
+              )}
+
+              {/* Check mark on hover */}
+              <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <CheckCircle className="w-6 h-6 text-buildacre-orange" />
+              </div>
+            </div>
+          ))}
         </div>
 
-        {/* Mobile Layout */}
-        <div className="md:hidden flex flex-col gap-8 relative">
-          <div className="absolute left-6 top-0 w-2 h-full bg-gradient-to-b from-buildacre-blue via-buildacre-orange to-yellow-300 rounded z-0" />
-          <div className="flex flex-col gap-0 relative z-10">
-            {steps.map((step, idx) => (
-              <div 
-                key={step.label} 
-                className="flex items-center mb-6 relative animate-fade-in"
-                style={{ animationDelay: `${idx * 110}ms` }}
-              >
-                <div className="flex flex-col items-center mr-4">
-                  <div 
-                    className={`w-10 h-10 rounded-full flex items-center justify-center shadow-lg border-4 border-white z-20
-                    bg-gradient-to-tr from-buildacre-blue via-buildacre-orange to-yellow-300 
-                    text-white font-bold text-lg transition-transform duration-300`}
-                  >
-                    {idx + 1}
-                  </div>
-                  {idx < steps.length - 1 && (
-                    <div className="w-[2px] flex-1 bg-gradient-to-b from-buildacre-orange via-buildacre-blue to-yellow-300 mt-1" />
-                  )}
-                </div>
-                <div className="bg-white rounded-xl shadow-xl px-4 py-3 flex-1">
-                  <div className="text-base font-semibold text-buildacre-blue mb-1">{step.label}</div>
-                  <div className="text-xs text-gray-500">{step.caption}</div>
-                </div>
-              </div>
-            ))}
-          </div>
+        {/* CTA Section */}
+        <div className="text-center bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+          <h3 className="text-2xl font-display font-bold text-buildacre-darkgray mb-4">
+            Ready to Start Your Project?
+          </h3>
+          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+            Let's turn your vision into reality. Contact us today for a free consultation and detailed project estimate.
+          </p>
+          <a 
+            href="#contact" 
+            className="btn-primary inline-flex items-center gap-2 text-lg"
+          >
+            Get Started Today
+            <ArrowRight size={20} />
+          </a>
         </div>
       </div>
     </section>
