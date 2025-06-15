@@ -73,8 +73,8 @@ export default {
 			},
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],
-				serif: ['Playfair Display', 'serif'],
-				display: ['Playfair Display', 'serif'],
+				display: ['Poppins', 'sans-serif'],
+				body: ['Inter', 'sans-serif'],
 			},
 			keyframes: {
 				'accordion-down': {

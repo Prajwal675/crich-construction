@@ -43,11 +43,11 @@
   }
 
   body {
-    @apply bg-buildacre-bg text-foreground font-sans;
+    @apply bg-buildacre-bg text-foreground font-body;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold text-buildacre-darkgray;
+    @apply font-display font-semibold text-buildacre-darkgray;
   }
 
   h1 {
