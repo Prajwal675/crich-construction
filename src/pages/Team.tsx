@@ -7,32 +7,32 @@ const teamMembers = [
   {
     name: "John Anderson",
     position: "Managing Director",
-    image: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952",
+    image: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=400&h=400&fit=crop&crop=face",
   },
   {
     name: "Sarah Williams",
     position: "Director",
-    image: "https://images.unsplash.com/photo-1589729132389-8f0e0b55b91e",
+    image: "https://images.unsplash.com/photo-1589729132389-8f0e0b55b91e?w=400&h=400&fit=crop&crop=face",
   },
   {
     name: "Michael Chen",
     position: "Technical Head",
-    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
+    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=400&fit=crop&crop=face",
   },
   {
     name: "David Thompson",
     position: "General Manager",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a",
+    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face",
   },
   {
     name: "Emily Rodriguez",
     position: "IT Team Lead",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
   },
   {
     name: "James Wilson",
     position: "Procurement Head",
-    image: "https://images.unsplash.com/photo-1548449112-96a38a643324",
+    image: "https://images.unsplash.com/photo-1548449112-96a38a643324?w=400&h=400&fit=crop&crop=face",
   }
 ];
 
@@ -44,7 +44,7 @@ const Team = () => {
         <section className="section-padding">
           <div className="container mx-auto container-padding">
             <div className="mb-20">
-              <h1 className="text-[120px] font-bold leading-tight mb-2 text-buildacre-darkgray">
+              <h1 className="text-6xl md:text-8xl lg:text-[120px] font-bold leading-tight mb-2 text-buildacre-darkgray">
                 our
                 <br />
                 <span className="italic">Team.</span>
@@ -68,18 +68,18 @@ const Team = () => {
                 Leadership Team
               </h2>
               
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {teamMembers.map((member, index) => (
                   <div 
-                    key={index}
-                    className="group animate-fade-in"
-                    style={{ animationDelay: `${index * 0.1}s` }}
+                    key={member.name}
+                    className="group"
                   >
                     <div className="aspect-square overflow-hidden mb-4 rounded-lg shadow-lg">
                       <img 
                         src={member.image} 
                         alt={member.name}
                         className="w-full h-full object-cover grayscale transition-all duration-300 group-hover:grayscale-0 transform group-hover:scale-105"
+                        loading="lazy"
                       />
                     </div>
                     <h3 className="text-xl font-semibold mb-1 text-buildacre-darkgray">{member.name}</h3>
