@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 const Hero = () => {
@@ -7,30 +8,30 @@ const Hero = () => {
       <div className="absolute inset-0 z-0">
         <div className="w-full h-full">
           <img
-            src="https://raw.githubusercontent.com/your-username/buildacre-construct-site/main/public/modern-house.jpg"
+            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
             alt="Modern luxury house"
             className="w-full h-full object-cover"
             onError={(e) => {
               console.error('Image failed to load');
-              e.currentTarget.src = 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80';
+              e.currentTarget.src = 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80';
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/40"></div>
         </div>
       </div>
 
       <div className="container mx-auto container-padding relative z-10">
         <div className="max-w-3xl">
-          <h1 className="text-5xl md:text-7xl font-display font-bold text-white mb-6 leading-tight">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-white mb-6 leading-tight">
             Rise and shine together
             <span className="block text-buildacre-orange font-display font-semibold">with quality construction</span>
           </h1>
-          <p className="text-lg md:text-xl text-white/80 mb-8 max-w-2xl font-sans font-light leading-relaxed">
+          <p className="text-base md:text-lg lg:text-xl text-white/80 mb-8 max-w-2xl font-sans font-light leading-relaxed">
             Our path at CRICH BUILDERS is intertwined with a love of building and an uncompromising dedication to our clients, resulting in a legacy of structures that serve as evidence of our proficiency
           </p>
           <a 
             href="#contact" 
-            className="btn-primary text-lg inline-block tracking-wide font-sans"
+            className="btn-primary text-base md:text-lg inline-block tracking-wide font-sans"
           >
             TALK TO OUR EXPERT
           </a>

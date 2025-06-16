@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Building, Calendar, MapPin } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -33,12 +34,12 @@ const ongoingProjects = [
   }
 ];
 
-const upcomingProjects = [
+const completedProjects = [
   {
     id: 4,
     title: "Eco-Friendly Community",
     location: "Green Valley, City",
-    startDate: "Jan 2025",
+    completionDate: "Jan 2024",
     description: "Sustainable residential community with net-zero energy homes and shared green spaces.",
     thumbnailSrc: "https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     projectType: "Residential"
@@ -47,7 +48,7 @@ const upcomingProjects = [
     id: 5,
     title: "Medical Center Expansion",
     location: "Health District, City",
-    startDate: "Mar 2025",
+    completionDate: "Mar 2024",
     description: "Major expansion of existing medical center with new facilities and cutting-edge technology.",
     thumbnailSrc: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     projectType: "Commercial"
@@ -56,7 +57,7 @@ const upcomingProjects = [
     id: 6,
     title: "Smart Bridge Construction",
     location: "River District, City",
-    startDate: "Apr 2025",
+    completionDate: "Apr 2024",
     description: "State-of-the-art bridge construction with smart monitoring systems and pedestrian-friendly design.",
     thumbnailSrc: "https://images.unsplash.com/photo-1545558014-8692077e9b5c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     projectType: "Infrastructure"
@@ -95,28 +96,28 @@ const ProjectsSection = () => {
         />
       </div>
       
-      <div className="bg-white p-6 shadow-md">
+      <div className="bg-white p-4 md:p-6 shadow-md">
         <div className="flex items-start justify-between mb-2">
-          <h3 className="text-xl font-bold">{project.title}</h3>
+          <h3 className="text-lg md:text-xl font-bold">{project.title}</h3>
           <span className="bg-buildacre-blue/10 text-buildacre-blue text-xs py-1 px-2 rounded-full">
             {project.projectType}
           </span>
         </div>
         
-        <p className="text-gray-600 mb-4">{project.description}</p>
+        <p className="text-gray-600 mb-4 text-sm md:text-base">{project.description}</p>
         
-        <div className="flex flex-wrap gap-4 text-sm">
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 text-sm">
           <div className="flex items-center">
             <MapPin className="w-4 h-4 mr-1 text-buildacre-orange" />
-            <span>{project.location}</span>
+            <span className="text-xs sm:text-sm">{project.location}</span>
           </div>
           
           <div className="flex items-center">
             <Calendar className="w-4 h-4 mr-1 text-buildacre-orange" />
-            <span>
+            <span className="text-xs sm:text-sm">
               {type === 'ongoing' || type === 'interior'
                 ? `Completion: ${project.completionDate}`
-                : `Starting: ${project.startDate}`}
+                : `Completed: ${project.completionDate}`}
             </span>
           </div>
         </div>
@@ -125,46 +126,49 @@ const ProjectsSection = () => {
   );
 
   return (
-    <section id="projects" className="section-padding bg-buildacre-bg">
+    <section id="projects" className="section-padding bg-buildacre-bg pt-20 md:pt-32">
       <div className="container mx-auto container-padding">
-        <div className="text-center mb-12">
-          <h2 className="mb-4">Our Projects</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Explore our ongoing, upcoming and interior projects, showcasing our expertise and commitment to excellence.
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="mb-4 text-2xl md:text-4xl">Our Projects</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto text-sm md:text-base">
+            Explore our ongoing, completed and interior projects, showcasing our expertise and commitment to excellence.
           </p>
         </div>
 
         <Tabs defaultValue="ongoing" className="w-full">
-          <div className="flex justify-center mb-8">
+          <div className="flex justify-center mb-6 md:mb-8">
             <TabsList className="grid grid-cols-3 w-full max-w-xl">
-              <TabsTrigger value="ongoing">
-                <Building className="w-4 h-4 mr-2" />
-                Ongoing Projects
+              <TabsTrigger value="ongoing" className="text-xs md:text-sm">
+                <Building className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" />
+                <span className="hidden sm:inline">Ongoing</span>
+                <span className="sm:hidden">Active</span>
               </TabsTrigger>
-              <TabsTrigger value="upcoming">
-                <Calendar className="w-4 h-4 mr-2" />
-                Upcoming Projects
+              <TabsTrigger value="completed" className="text-xs md:text-sm">
+                <Calendar className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" />
+                <span className="hidden sm:inline">Completed</span>
+                <span className="sm:hidden">Done</span>
               </TabsTrigger>
-              <TabsTrigger value="interior">
-                <Building className="w-4 h-4 mr-2" />
-                Interior Projects
+              <TabsTrigger value="interior" className="text-xs md:text-sm">
+                <Building className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" />
+                <span className="hidden sm:inline">Interior</span>
+                <span className="sm:hidden">Interior</span>
               </TabsTrigger>
             </TabsList>
           </div>
 
-          <TabsContent value="ongoing" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <TabsContent value="ongoing" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {ongoingProjects.map((project) => (
               <ProjectCard key={project.id} project={project} type="ongoing" />
             ))}
           </TabsContent>
 
-          <TabsContent value="upcoming" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {upcomingProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} type="upcoming" />
+          <TabsContent value="completed" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+            {completedProjects.map((project) => (
+              <ProjectCard key={project.id} project={project} type="completed" />
             ))}
           </TabsContent>
 
-          <TabsContent value="interior" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <TabsContent value="interior" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {interiorProjects.map((project) => (
               <ProjectCard key={project.id} project={project} type="interior" />
             ))}
