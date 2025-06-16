@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Building, Calendar, MapPin } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -88,7 +87,7 @@ const interiorProjects = [
 const ProjectsSection = () => {
   const ProjectCard = ({ project, type }: { project: any, type: string }) => (
     <div className="relative overflow-hidden rounded-xl group">
-      <div className="relative w-full aspect-video rounded-xl overflow-hidden">
+      <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden">
         <img 
           src={project.thumbnailSrc} 
           alt={project.title} 
@@ -96,26 +95,26 @@ const ProjectsSection = () => {
         />
       </div>
       
-      <div className="bg-white p-4 md:p-6 shadow-md">
+      <div className="bg-white p-3 md:p-4 shadow-md">
         <div className="flex items-start justify-between mb-2">
-          <h3 className="text-lg md:text-xl font-bold">{project.title}</h3>
-          <span className="bg-buildacre-blue/10 text-buildacre-blue text-xs py-1 px-2 rounded-full">
+          <h3 className="text-base md:text-lg font-bold leading-tight">{project.title}</h3>
+          <span className="bg-buildacre-blue/10 text-buildacre-blue text-xs py-1 px-2 rounded-full ml-2 shrink-0">
             {project.projectType}
           </span>
         </div>
         
-        <p className="text-gray-600 mb-4 text-sm md:text-base">{project.description}</p>
+        <p className="text-gray-600 mb-3 text-xs md:text-sm line-clamp-2">{project.description}</p>
         
-        <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 text-sm">
+        <div className="flex flex-col gap-1 text-xs">
           <div className="flex items-center">
-            <MapPin className="w-4 h-4 mr-1 text-buildacre-orange" />
-            <span className="text-xs sm:text-sm">{project.location}</span>
+            <MapPin className="w-3 h-3 mr-1 text-buildacre-orange shrink-0" />
+            <span className="truncate">{project.location}</span>
           </div>
           
           <div className="flex items-center">
-            <Calendar className="w-4 h-4 mr-1 text-buildacre-orange" />
-            <span className="text-xs sm:text-sm">
-              {type === 'ongoing' || type === 'interior'
+            <Calendar className="w-3 h-3 mr-1 text-buildacre-orange shrink-0" />
+            <span>
+              {type === 'ongoing'
                 ? `Completion: ${project.completionDate}`
                 : `Completed: ${project.completionDate}`}
             </span>
@@ -131,46 +130,33 @@ const ProjectsSection = () => {
         <div className="text-center mb-8 md:mb-12">
           <h2 className="mb-4 text-2xl md:text-4xl">Our Projects</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-sm md:text-base">
-            Explore our ongoing, completed and interior projects, showcasing our expertise and commitment to excellence.
+            Explore our ongoing and completed projects, showcasing our expertise and commitment to excellence.
           </p>
         </div>
 
         <Tabs defaultValue="ongoing" className="w-full">
           <div className="flex justify-center mb-6 md:mb-8">
-            <TabsList className="grid grid-cols-3 w-full max-w-xl">
-              <TabsTrigger value="ongoing" className="text-xs md:text-sm">
-                <Building className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" />
-                <span className="hidden sm:inline">Ongoing</span>
-                <span className="sm:hidden">Active</span>
+            <TabsList className="grid grid-cols-2 w-full max-w-md">
+              <TabsTrigger value="ongoing" className="text-sm md:text-base">
+                <Building className="w-4 h-4 mr-2" />
+                Ongoing
               </TabsTrigger>
-              <TabsTrigger value="completed" className="text-xs md:text-sm">
-                <Calendar className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" />
-                <span className="hidden sm:inline">Completed</span>
-                <span className="sm:hidden">Done</span>
-              </TabsTrigger>
-              <TabsTrigger value="interior" className="text-xs md:text-sm">
-                <Building className="w-3 h-3 md:w-4 md:h-4 mr-1 md:mr-2" />
-                <span className="hidden sm:inline">Interior</span>
-                <span className="sm:hidden">Interior</span>
+              <TabsTrigger value="completed" className="text-sm md:text-base">
+                <Calendar className="w-4 h-4 mr-2" />
+                Completed
               </TabsTrigger>
             </TabsList>
           </div>
 
-          <TabsContent value="ongoing" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          <TabsContent value="ongoing" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {ongoingProjects.map((project) => (
               <ProjectCard key={project.id} project={project} type="ongoing" />
             ))}
           </TabsContent>
 
-          <TabsContent value="completed" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          <TabsContent value="completed" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {completedProjects.map((project) => (
               <ProjectCard key={project.id} project={project} type="completed" />
-            ))}
-          </TabsContent>
-
-          <TabsContent value="interior" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-            {interiorProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} type="interior" />
             ))}
           </TabsContent>
         </Tabs>
