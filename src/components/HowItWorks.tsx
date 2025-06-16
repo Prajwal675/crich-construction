@@ -9,14 +9,14 @@ const steps = [
     description: "We begin with comprehensive design and planning, ensuring every detail aligns with your vision and requirements."
   },
   {
-    icon: HardHat,
-    title: "Construction",
-    description: "Our skilled team executes the construction phase with precision, maintaining the highest quality standards throughout."
-  },
-  {
     icon: ShoppingCart,
     title: "Interior Material Selection",
     description: "Choose from premium materials and finishes for your interiors, with our expert guidance on quality and aesthetics."
+  },
+  {
+    icon: HardHat,
+    title: "Construction",
+    description: "Our skilled team executes the construction phase with precision, maintaining the highest quality standards throughout."
   },
   {
     icon: CheckCircle,

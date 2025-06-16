@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -52,18 +51,27 @@ const Navbar = () => {
     }
   };
 
+  const handleLogoClick = () => {
+    setIsMenuOpen(false);
+    if (location.pathname !== '/') {
+      navigate('/');
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'}`}>
       <div className="container mx-auto container-padding">
         <div className="flex justify-between items-center">
           <div className="flex items-center space-x-3">
-            <Link to="/" className="h-12 md:h-16 w-auto">
+            <button onClick={handleLogoClick} className="h-12 md:h-16 w-auto">
               <img 
                 src={logoImage}
                 alt="CRICH BUILDERS" 
                 className={`h-full w-auto transition-all duration-300 ${isScrolled ? 'brightness-100' : 'brightness-0 invert'}`}
               />
-            </Link>
+            </button>
           </div>
 
           <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
