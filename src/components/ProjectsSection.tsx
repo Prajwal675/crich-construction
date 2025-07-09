@@ -1,38 +1,9 @@
 import React from 'react';
 import { Building, Calendar, MapPin } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import ProjectCarousel from './ProjectCarousel';
 
-// Project data updates
-const ongoingProjects = [
-  {
-    id: 1,
-    title: "Highrise Apartments Complex",
-    location: "Downtown, City",
-    completionDate: "Dec 2024",
-    description: "Luxury apartment complex with 200+ units featuring modern amenities and sustainable design.",
-    thumbnailSrc: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    projectType: "Residential"
-  },
-  {
-    id: 2,
-    title: "Business Park Development",
-    location: "Tech District, City",
-    completionDate: "Aug 2025",
-    description: "Modern office campus with 5 buildings, green spaces, and integrated smart technology.",
-    thumbnailSrc: "https://images.unsplash.com/photo-1464082354059-27db6ce50048?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    projectType: "Commercial"
-  },
-  {
-    id: 3,
-    title: "Transit Hub Renovation",
-    location: "Central Station, City",
-    completionDate: "Mar 2025",
-    description: "Major renovation of historical transit hub with modern facilities while preserving architectural heritage.",
-    thumbnailSrc: "https://images.unsplash.com/photo-1495385794356-15371f348c31?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-    projectType: "Infrastructure"
-  }
-];
-
+// Only keeping completed projects data
 const completedProjects = [
   {
     id: 4,
@@ -60,27 +31,6 @@ const completedProjects = [
     description: "State-of-the-art bridge construction with smart monitoring systems and pedestrian-friendly design.",
     thumbnailSrc: "https://images.unsplash.com/photo-1545558014-8692077e9b5c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     projectType: "Infrastructure"
-  }
-];
-
-const interiorProjects = [
-  {
-    id: 7,
-    title: "Modern Minimalist Home",
-    location: "Downtown, City",
-    completionDate: "Jan 2025",
-    description: "Contemporary interior design with minimalist aesthetics and smart home integration.",
-    thumbnailSrc: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9",
-    projectType: "Interior"
-  },
-  {
-    id: 8,
-    title: "Luxury Villa Interior",
-    location: "Suburban Area, City",
-    completionDate: "Mar 2025",
-    description: "High-end interior renovation with custom furniture and premium finishes.",
-    thumbnailSrc: "https://images.unsplash.com/photo-1721322800607-8c38375eef04",
-    projectType: "Interior"
   }
 ];
 
@@ -148,10 +98,8 @@ const ProjectsSection = () => {
             </TabsList>
           </div>
 
-          <TabsContent value="ongoing" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-            {ongoingProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} type="ongoing" />
-            ))}
+          <TabsContent value="ongoing" className="mt-8">
+            <ProjectCarousel />
           </TabsContent>
 
           <TabsContent value="completed" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
