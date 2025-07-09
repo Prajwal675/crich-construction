@@ -49,21 +49,23 @@ const projectImages = [
 ];
 
 const ProjectCarousel = () => {
-  const plugin = React.useRef(
-    Autoplay({ delay: 3000, stopOnInteraction: true })
+  const autoplayPlugin = React.useRef(
+    Autoplay({ 
+      delay: 3000, 
+      stopOnInteraction: true,
+      stopOnMouseEnter: true
+    })
   );
 
   return (
     <div className="w-full">
       <Carousel
-        plugins={[plugin.current]}
+        plugins={[autoplayPlugin.current]}
         opts={{
           align: "start",
           loop: true,
         }}
         className="w-full"
-        onMouseEnter={plugin.current.stop}
-        onMouseLeave={plugin.current.reset}
       >
         <CarouselContent className="-ml-1 sm:-ml-2 md:-ml-4">
           {projectImages.map((project) => (
