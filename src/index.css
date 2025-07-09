@@ -51,15 +51,15 @@
   }
 
   h1 {
-    @apply text-3xl md:text-4xl lg:text-5xl;
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
   }
 
   h2 {
-    @apply text-2xl md:text-3xl lg:text-4xl;
+    @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl;
   }
 
   h3 {
-    @apply text-xl md:text-2xl lg:text-3xl;
+    @apply text-lg sm:text-xl md:text-2xl lg:text-3xl;
   }
 
   p {
@@ -69,19 +69,19 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-buildacre-blue text-white font-medium px-4 md:px-6 py-2 md:py-3 rounded hover:bg-opacity-90 transition-all duration-300 text-sm md:text-base;
+    @apply bg-buildacre-blue text-white font-medium px-3 sm:px-4 md:px-6 py-2 md:py-3 rounded hover:bg-opacity-90 transition-all duration-300 text-xs sm:text-sm md:text-base;
   }
 
   .btn-secondary {
-    @apply bg-buildacre-orange text-white font-medium px-4 md:px-6 py-2 md:py-3 rounded hover:bg-opacity-90 transition-all duration-300 text-sm md:text-base;
+    @apply bg-buildacre-orange text-white font-medium px-3 sm:px-4 md:px-6 py-2 md:py-3 rounded hover:bg-opacity-90 transition-all duration-300 text-xs sm:text-sm md:text-base;
   }
 
   .section-padding {
-    @apply py-12 md:py-16 lg:py-24;
+    @apply py-8 sm:py-12 md:py-16 lg:py-24;
   }
 
   .container-padding {
-    @apply px-4 md:px-6 lg:px-8;
+    @apply px-3 sm:px-4 md:px-6 lg:px-8;
   }
 
   .hover-scale {
@@ -89,7 +89,7 @@
   }
 
   .card {
-    @apply bg-white rounded-lg shadow-md p-4 md:p-6 hover:shadow-lg transition-shadow duration-300;
+    @apply bg-white rounded-lg shadow-md p-3 sm:p-4 md:p-6 hover:shadow-lg transition-shadow duration-300;
   }
 }
 
@@ -100,12 +100,47 @@ html {
 /* Mobile optimization for sections */
 @media (max-width: 768px) {
   section {
-    scroll-margin-top: 80px;
+    scroll-margin-top: 70px;
+  }
+  
+  /* Optimize image rendering on mobile */
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
   }
 }
 
 @media (min-width: 769px) {
   section {
     scroll-margin-top: 100px;
+  }
+}
+
+/* Performance optimizations */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Progressive enhancement for better loading */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Improve text rendering on mobile */
+@media (max-width: 768px) {
+  body {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeSpeed;
   }
 }

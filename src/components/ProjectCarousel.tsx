@@ -8,6 +8,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
+import OptimizedImage from './OptimizedImage';
 
 const projectImages = [
   {
@@ -64,16 +65,18 @@ const ProjectCarousel = () => {
         onMouseEnter={plugin.current.stop}
         onMouseLeave={plugin.current.reset}
       >
-        <CarouselContent className="-ml-2 md:-ml-4">
+        <CarouselContent className="-ml-1 sm:-ml-2 md:-ml-4">
           {projectImages.map((project) => (
-            <CarouselItem key={project.id} className="pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
-              <div className="group overflow-hidden rounded-xl bg-white shadow-lg transition-all duration-300 hover:shadow-xl animate-fade-in">
-                <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
-                  <img 
-                    src={project.src} 
+            <CarouselItem key={project.id} className="pl-1 sm:pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
+              <div className="group overflow-hidden rounded-lg sm:rounded-xl bg-white shadow-md sm:shadow-lg transition-all duration-300 hover:shadow-xl animate-fade-in">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-lg sm:rounded-xl">
+                  <OptimizedImage
+                    src={project.src}
                     alt={project.alt}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    width={400}
+                    height={300}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
@@ -82,9 +85,9 @@ const ProjectCarousel = () => {
           ))}
         </CarouselContent>
         
-        <div className="flex justify-center mt-8 gap-4">
-          <CarouselPrevious className="relative translate-y-0 left-0 bg-buildacre-blue hover:bg-buildacre-blue/90 text-white border-buildacre-blue" />
-          <CarouselNext className="relative translate-y-0 right-0 bg-buildacre-blue hover:bg-buildacre-blue/90 text-white border-buildacre-blue" />
+        <div className="flex justify-center mt-4 sm:mt-6 md:mt-8 gap-2 sm:gap-4">
+          <CarouselPrevious className="relative translate-y-0 left-0 bg-buildacre-blue hover:bg-buildacre-blue/90 text-white border-buildacre-blue h-8 w-8 sm:h-10 sm:w-10" />
+          <CarouselNext className="relative translate-y-0 right-0 bg-buildacre-blue hover:bg-buildacre-blue/90 text-white border-buildacre-blue h-8 w-8 sm:h-10 sm:w-10" />
         </div>
       </Carousel>
     </div>
