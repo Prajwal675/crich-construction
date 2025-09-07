@@ -30,6 +30,21 @@ const BOQPage = () => {
         <section className="section-padding bg-buildacre-bg">
           <div className="container mx-auto container-padding">
             <div className="max-w-4xl mx-auto">
+              {/* Important Note */}
+              <div className="mb-8 p-6 bg-gradient-to-r from-amber-50 to-orange-50 border-l-4 border-amber-500 rounded-lg shadow-sm">
+                <div className="flex items-center">
+                  <div className="flex-shrink-0">
+                    <svg className="h-6 w-6 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <div className="ml-3">
+                    <p className="text-lg font-semibold text-amber-800">
+                      Note: BOQ will be modified according to your requirement
+                    </p>
+                  </div>
+                </div>
+              </div>
               <Accordion type="single" collapsible className="space-y-4">
                 <AccordionItem value="designs" className="bg-white rounded-lg shadow-sm">
                   <AccordionTrigger className="px-6 hover:no-underline">
