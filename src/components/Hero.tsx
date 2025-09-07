@@ -1,6 +1,7 @@
 
 import React from 'react';
 import OptimizedImage from './OptimizedImage';
+import modernBrightHouse from '../assets/modern-bright-house.jpg';
 
 const Hero = () => {
   return (
@@ -8,13 +9,13 @@ const Hero = () => {
       {/* Background image */}
       <div className="absolute inset-0 z-0">
         <OptimizedImage
-          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
-          alt="Modern luxury house"
+          src={modernBrightHouse}
+          alt="Modern bright house with clean architecture"
           className="w-full h-full object-cover"
           priority={true}
           sizes="100vw"
-          width={1950}
-          height={1300}
+          width={1920}
+          height={1080}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/40"></div>
       </div>
