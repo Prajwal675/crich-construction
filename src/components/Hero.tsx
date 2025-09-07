@@ -22,19 +22,21 @@ const Hero = () => {
 
       <div className="container mx-auto container-padding relative z-10">
         <div className="max-w-3xl">
-          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-display font-bold text-gray-800 mb-4 md:mb-6 leading-tight">
-            Rise and shine together
-            <span className="block text-buildacre-orange font-display font-semibold">with quality construction</span>
-          </h1>
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 mb-6 md:mb-8 max-w-2xl font-sans font-light leading-relaxed">
-            Our path at CRICH BUILDERS is intertwined with a love of building and an uncompromising dedication to our clients, resulting in a legacy of structures that serve as evidence of our proficiency
-          </p>
-          <a 
-            href="#contact" 
-            className="btn-primary text-sm sm:text-base md:text-lg inline-block tracking-wide font-sans"
-          >
-            TALK TO OUR EXPERT
-          </a>
+          <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-lg">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-display font-bold text-gray-800 mb-4 md:mb-6 leading-tight">
+              Rise and shine together
+              <span className="block text-buildacre-orange font-display font-semibold">with quality construction</span>
+            </h1>
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 mb-6 md:mb-8 max-w-2xl font-sans font-light leading-relaxed">
+              Our path at CRICH BUILDERS is intertwined with a love of building and an uncompromising dedication to our clients, resulting in a legacy of structures that serve as evidence of our proficiency
+            </p>
+            <a 
+              href="#contact" 
+              className="btn-primary text-sm sm:text-base md:text-lg inline-block tracking-wide font-sans"
+            >
+              TALK TO OUR EXPERT
+            </a>
+          </div>
         </div>
       </div>
 
