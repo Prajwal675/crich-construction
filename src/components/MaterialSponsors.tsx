@@ -41,6 +41,22 @@ const sponsors = [
   {
     name: "Finolex",
     logo: "/lovable-uploads/33b3becf-905b-4cfd-bd19-cc2aa43e0f81.png"
+  },
+  {
+    name: "TurboSteel",
+    logo: "/lovable-uploads/f77d8c58-61c9-45e3-a7b3-2d1ae2de8765.png"
+  },
+  {
+    name: "UltraTech Cement",
+    logo: "/lovable-uploads/8aea1618-4ed4-4c3c-85ef-8ad690640baa.png"
+  },
+  {
+    name: "Birla Super",
+    logo: "/lovable-uploads/a2fe1820-9752-4219-9bb5-f77c1b9c195c.png"
+  },
+  {
+    name: "JSW",
+    logo: "/lovable-uploads/0a802801-eee3-453b-8059-7a103c7df575.png"
   }
 ];
 
@@ -56,7 +72,7 @@ const MaterialSponsors = () => {
         </div>
 
         <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-5 gap-4">
+          <div className="grid grid-cols-7 gap-4">
             {sponsors.map((sponsor, index) => (
               <div 
                 key={index} 

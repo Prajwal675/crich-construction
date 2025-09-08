@@ -87,12 +87,12 @@ const Navbar = () => {
             >
               About
             </button>
-            <button 
-              onClick={() => handleNavClick('#projects')}
+            <Link
+              to="/projects"
               className={`font-medium transition-colors text-sm lg:text-base ${isScrolled ? 'text-buildacre-darkgray hover:text-buildacre-blue' : 'text-white hover:text-buildacre-orange'}`}
             >
               Projects
-            </button>
+            </Link>
             <Link 
               to="/boq" 
               className={`font-medium transition-colors text-sm lg:text-base ${isScrolled ? 'text-buildacre-darkgray hover:text-buildacre-blue' : 'text-white hover:text-buildacre-orange'}`}
@@ -137,12 +137,13 @@ const Navbar = () => {
               >
                 About
               </button>
-              <button 
-                onClick={() => handleNavClick('#projects')}
-                className="font-medium py-2 hover:text-buildacre-blue transition-colors text-left"
+              <Link
+                to="/projects"
+                className="font-medium py-2 hover:text-buildacre-blue transition-colors"
+                onClick={() => setIsMenuOpen(false)}
               >
                 Projects
-              </button>
+              </Link>
               <Link 
                 to="/boq" 
                 className="font-medium py-2 hover:text-buildacre-blue transition-colors"
