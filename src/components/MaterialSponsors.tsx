@@ -3,20 +3,20 @@ import React from 'react';
 
 const sponsors = [
   {
-    name: "Asian Paints",
-    logo: "/lovable-uploads/79f6b791-04e3-497a-a069-b428c2ddd05f.png"
+    name: "TurboSteel",
+    logo: "/lovable-uploads/turbosteel.png"
   },
   {
-    name: "GM",
-    logo: "/lovable-uploads/da7e9492-52be-4ff5-8c92-58ae444074e5.png"
+    name: "UltraTech Cement",
+    logo: "/lovable-uploads/utech_cement.png"
   },
   {
-    name: "CERA",
-    logo: "/lovable-uploads/a8a19457-dd4e-4bd6-b2a4-23c3c38e1087.png"
+    name: "Birla Super",
+    logo: "/lovable-uploads/birla_super_cement.jpeg"
   },
   {
-    name: "Hindware",
-    logo: "/lovable-uploads/58c89d71-e88c-45e4-b6a4-c08c4be70efc.png"
+    name: "JSW",
+    logo: "/lovable-uploads/jsw.png"
   },
   {
     name: "Parryware",
@@ -72,11 +72,11 @@ const MaterialSponsors = () => {
         </div>
 
         <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-7 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-4 md:gap-6">
             {sponsors.map((sponsor, index) => (
               <div 
                 key={index} 
-                className="bg-white border border-gray-200 p-6 aspect-[4/3] flex items-center justify-center hover:scale-105 transition-transform duration-300 cursor-pointer shadow-sm rounded-lg"
+                className="bg-card border border-border p-3 md:p-4 lg:p-6 aspect-[4/3] flex items-center justify-center hover:scale-105 transition-transform duration-300 cursor-pointer shadow-sm rounded-lg"
               >
                 <img 
                   src={sponsor.logo} 
