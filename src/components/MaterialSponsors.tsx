@@ -3,20 +3,20 @@ import React from 'react';
 
 const sponsors = [
   {
-    name: "TurboSteel",
-    logo: "/lovable-uploads/turbosteel.png"
+    name: "Asian Paints",
+    logo: "/lovable-uploads/79f6b791-04e3-497a-a069-b428c2ddd05f.png"
   },
   {
-    name: "UltraTech Cement",
-    logo: "/lovable-uploads/utech_cement.png"
+    name: "GM",
+    logo: "/lovable-uploads/da7e9492-52be-4ff5-8c92-58ae444074e5.png"
   },
   {
-    name: "Birla Super",
-    logo: "/lovable-uploads/birla_super_cement.jpeg"
+    name: "CERA",
+    logo: "/lovable-uploads/a8a19457-dd4e-4bd6-b2a4-23c3c38e1087.png"
   },
   {
-    name: "JSW",
-    logo: "/lovable-uploads/jsw.png"
+    name: "Hindware",
+    logo: "/lovable-uploads/58c89d71-e88c-45e4-b6a4-c08c4be70efc.png"
   },
   {
     name: "Parryware",
@@ -44,19 +44,19 @@ const sponsors = [
   },
   {
     name: "TurboSteel",
-    logo: "/lovable-uploads/f77d8c58-61c9-45e3-a7b3-2d1ae2de8765.png"
+    logo: "/lovable-uploads/turbosteel.png"
   },
   {
     name: "UltraTech Cement",
-    logo: "/lovable-uploads/8aea1618-4ed4-4c3c-85ef-8ad690640baa.png"
+    logo: "/lovable-uploads/utech_cement.png"
   },
   {
     name: "Birla Super",
-    logo: "/lovable-uploads/a2fe1820-9752-4219-9bb5-f77c1b9c195c.png"
+    logo: "/lovable-uploads/birla_super_cement.jpeg"
   },
   {
     name: "JSW",
-    logo: "/lovable-uploads/0a802801-eee3-453b-8059-7a103c7df575.png"
+    logo: "/lovable-uploads/jsw.png"
   }
 ];
 
