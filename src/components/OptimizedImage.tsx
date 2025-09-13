@@ -22,19 +22,24 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(priority);
+  const [imageSrc, setImageSrc] = useState('');
   const imgRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
-    if (priority) return;
+    if (priority) {
+      setImageSrc(src);
+      return;
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsInView(true);
+          setImageSrc(src);
           observer.disconnect();
         }
       },
-      { rootMargin: '50px' }
+      { rootMargin: '100px' }
     );
 
     if (imgRef.current) {
@@ -42,17 +47,17 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
     }
 
     return () => observer.disconnect();
-  }, [priority]);
+  }, [priority, src]);
 
   const handleLoad = () => {
     setIsLoaded(true);
   };
 
   const handleError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-    console.error('Image failed to load:', src);
-    // Fallback to original image if WebP fails
-    if (src.includes('.webp')) {
-      e.currentTarget.src = src.replace('.webp', '.jpg');
+    console.warn('Image failed to load:', imageSrc);
+    // Fallback handling
+    if (imageSrc.includes('.webp')) {
+      setImageSrc(imageSrc.replace('.webp', '.jpg'));
     }
   };
 
@@ -60,21 +65,22 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
     <div className={`relative overflow-hidden ${className}`} ref={imgRef}>
       {!isLoaded && (
         <div className="absolute inset-0 bg-gray-200 animate-pulse flex items-center justify-center">
-          <div className="w-8 h-8 border-2 border-buildacre-blue border-t-transparent rounded-full animate-spin"></div>
+          <div className="w-6 h-6 border-2 border-primary border-t-transparent rounded-full animate-spin opacity-60"></div>
         </div>
       )}
-      {isInView && (
+      {isInView && imageSrc && (
         <img
-          src={src}
+          src={imageSrc}
           alt={alt}
           width={width}
           height={height}
           sizes={sizes}
-          className={`transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'} ${className}`}
+          className={`transition-opacity duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'} ${className}`}
           onLoad={handleLoad}
           onError={handleError}
           loading={priority ? 'eager' : 'lazy'}
           decoding="async"
+          fetchPriority={priority ? 'high' : 'auto'}
         />
       )}
     </div>

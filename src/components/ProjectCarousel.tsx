@@ -45,13 +45,48 @@ const projectImages = [
     id: 7,
     src: "/lovable-uploads/c91ac009-2885-428e-89c0-974d99068ecd.png",
     alt: "Construction progress"
+  },
+  {
+    id: 8,
+    src: "/lovable-uploads/project-i1.jpg",
+    alt: "Modern residential building with contemporary design"
+  },
+  {
+    id: 9,
+    src: "/lovable-uploads/project-i2.jpg",
+    alt: "Stylish multi-story residential construction"
+  },
+  {
+    id: 10,
+    src: "/lovable-uploads/project-i3.jpg",
+    alt: "Contemporary commercial building with festive decorations"
+  },
+  {
+    id: 11,
+    src: "/lovable-uploads/project-i4.jpg",
+    alt: "Modern architectural design with unique facade"
+  },
+  {
+    id: 12,
+    src: "/lovable-uploads/project-i5.png",
+    alt: "Elegant residential building with traditional elements"
+  },
+  {
+    id: 13,
+    src: "/lovable-uploads/project-i6.png",
+    alt: "Contemporary house with modern balcony design"
+  },
+  {
+    id: 14,
+    src: "/lovable-uploads/project-i7.png",
+    alt: "Luxury multi-story building with sophisticated architecture"
   }
 ];
 
 const ProjectCarousel = () => {
   const autoplayPlugin = React.useRef(
     Autoplay({ 
-      delay: 3000, 
+      delay: 4000, 
       stopOnInteraction: true,
       stopOnMouseEnter: true
     })
@@ -79,6 +114,7 @@ const ProjectCarousel = () => {
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     width={400}
                     height={300}
+                    priority={project.id <= 3}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>

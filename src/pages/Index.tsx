@@ -15,32 +15,44 @@ import WhatsAppChat from '../components/WhatsAppChat';
 
 const Index = () => {
   useEffect(() => {
-    // Preload critical images with WebP support
+    // Preload critical images for faster loading
     const preloadImages = [
       'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80',
       '/lovable-uploads/a3ea3364-9d5b-47e5-92e1-5312fb2f5ea8.png',
-      '/lovable-uploads/4843a59d-d71e-43a8-88b0-8d15f5d11ab1.png'
+      '/lovable-uploads/4843a59d-d71e-43a8-88b0-8d15f5d11ab1.png',
+      '/lovable-uploads/project-i1.jpg',
+      '/lovable-uploads/project-i2.jpg'
     ];
     
-    preloadImages.forEach(src => {
-      const link = document.createElement('link');
-      link.rel = 'preload';
-      link.as = 'image';
-      link.href = src;
-      document.head.appendChild(link);
+    const preloadPromises = preloadImages.map(src => {
+      return new Promise<void>((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => resolve();
+        img.onerror = () => resolve(); // Don't fail the whole process
+        img.src = src;
+        
+        // Also add as resource hint
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'image';
+        link.href = src;
+        document.head.appendChild(link);
+      });
     });
 
-    // Remove preload links after a delay to clean up
-    const cleanup = setTimeout(() => {
-      preloadImages.forEach(src => {
-        const link = document.querySelector(`link[href="${src}"]`);
-        if (link) {
-          document.head.removeChild(link);
-        }
-      });
-    }, 5000);
+    // Implement progressive loading
+    Promise.allSettled(preloadPromises).then(() => {
+      // Remove preload links after images are loaded to clean up DOM
+      setTimeout(() => {
+        preloadImages.forEach(src => {
+          const links = document.querySelectorAll(`link[href="${src}"]`);
+          links.forEach(link => link.remove());
+        });
+      }, 2000);
+    });
 
-    return () => clearTimeout(cleanup);
+    // Scroll to top for better UX
+    window.scrollTo(0, 0);
   }, []);
   
   return (
