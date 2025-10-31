@@ -46,20 +46,24 @@ const SocialFeed = () => {
             <Button 
               variant="default"
               size="lg"
-              onClick={() => window.open(instagramUrl, '_blank')}
+              asChild
               className="bg-buildacre-orange hover:bg-buildacre-orange/90"
             >
-              <Instagram className="mr-2 h-5 w-5" />
-              Follow @crich_ventures
+              <a href={instagramUrl} target="_blank" rel="noopener noreferrer">
+                <Instagram className="mr-2 h-5 w-5" />
+                Follow @crich_ventures
+              </a>
             </Button>
             <Button 
               variant="default"
               size="lg"
-              onClick={() => window.open(youtubeUrl, '_blank')}
+              asChild
               className="bg-red-600 hover:bg-red-700"
             >
-              <Youtube className="mr-2 h-5 w-5" />
-              Subscribe on YouTube
+              <a href={youtubeUrl} target="_blank" rel="noopener noreferrer">
+                <Youtube className="mr-2 h-5 w-5" />
+                Subscribe on YouTube
+              </a>
             </Button>
           </div>
         </div>
