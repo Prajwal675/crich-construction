@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Instagram } from 'lucide-react';
+import { Instagram, Youtube } from 'lucide-react';
 import { Button } from './ui/button';
 
 const posts = [
@@ -31,7 +31,8 @@ const posts = [
 ];
 
 const SocialFeed = () => {
-  //const instagramUrl = "https://www.instagram.com/buildacre/";
+  const instagramUrl = "https://www.instagram.com/crich_ventures?utm_source=qr&igsh=MXhkNHBzZnoyMjhq";
+  const youtubeUrl = "https://youtube.com/@crichventures?si=37A92Nmf5Cgh6wYD";
 
   return (
     <section className="section-padding bg-buildacre-bg">
@@ -39,17 +40,28 @@ const SocialFeed = () => {
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4">Follow Our Journey</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
-            Stay updated with our latest projects and behind-the-scenes moments on Instagram
+            Stay updated with our latest projects and behind-the-scenes moments
           </p>
-          <Button 
-            variant="default"
-            size="lg"
-            //onClick={() => window.open(instagramUrl, '_blank')}
-            className="bg-buildacre-orange hover:bg-buildacre-orange/90"
-          >
-            <Instagram className="mr-2 h-5 w-5" />
-            Follow @buildacre
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Button 
+              variant="default"
+              size="lg"
+              onClick={() => window.open(instagramUrl, '_blank')}
+              className="bg-buildacre-orange hover:bg-buildacre-orange/90"
+            >
+              <Instagram className="mr-2 h-5 w-5" />
+              Follow @crich_ventures
+            </Button>
+            <Button 
+              variant="default"
+              size="lg"
+              onClick={() => window.open(youtubeUrl, '_blank')}
+              className="bg-red-600 hover:bg-red-700"
+            >
+              <Youtube className="mr-2 h-5 w-5" />
+              Subscribe on YouTube
+            </Button>
+          </div>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
