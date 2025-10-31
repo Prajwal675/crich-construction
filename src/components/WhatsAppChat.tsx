@@ -9,8 +9,10 @@ const WhatsAppChat = () => {
     setIsOpen(!isOpen);
   };
 
-  const message = encodeURIComponent("Hello! I'm interested in Crich Constructions services.");
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+  const handleWhatsAppRedirect = () => {
+    const message = encodeURIComponent("Hello! I'm interested in Crich Constructions services.");
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+  };
 
   return (
     <div className="fixed bottom-6 right-6 z-50">
@@ -33,15 +35,13 @@ const WhatsAppChat = () => {
             <p className="text-gray-700 text-sm mb-4">
               Need assistance with your construction project? Chat with our experts now!
             </p>
-            <a 
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button 
+              onClick={handleWhatsAppRedirect}
               className="w-full bg-green-500 hover:bg-green-600 text-white rounded-lg py-3 px-4 flex items-center justify-center font-medium transition-colors"
             >
               <MessageCircle className="mr-2 h-5 w-5" />
               Start Chat
-            </a>
+            </button>
           </div>
         </div>
       )}
