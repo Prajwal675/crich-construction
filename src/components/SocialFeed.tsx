@@ -1,7 +1,8 @@
 
 import React from 'react';
 import { Instagram, Youtube } from 'lucide-react';
-import { Button } from './ui/button';
+import { buttonVariants } from './ui/button';
+import { cn } from '@/lib/utils';
 
 const posts = [
   {
@@ -43,28 +44,29 @@ const SocialFeed = () => {
             Stay updated with our latest projects and behind-the-scenes moments
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button 
-              variant="default"
-              size="lg"
-              asChild
-              className="bg-buildacre-orange hover:bg-buildacre-orange/90"
+            <a
+              href={instagramUrl}
+              target="_top"
+              rel="noopener noreferrer external nofollow"
+              className={cn(
+                buttonVariants({ variant: 'default', size: 'lg' }),
+                'bg-buildacre-orange hover:bg-buildacre-orange/90'
+              )}
+              aria-label="Follow Crich Ventures on Instagram"
             >
-              <a href={instagramUrl} target="_blank" rel="noopener noreferrer">
-                <Instagram className="mr-2 h-5 w-5" />
-                Follow @crich_ventures
-              </a>
-            </Button>
-            <Button 
-              variant="default"
-              size="lg"
-              asChild
-              className="bg-red-600 hover:bg-red-700"
+              <Instagram className="mr-2 h-5 w-5" />
+              Follow @crich_ventures
+            </a>
+            <a
+              href={youtubeUrl}
+              target="_top"
+              rel="noopener noreferrer external nofollow"
+              className={cn(buttonVariants({ variant: 'destructive', size: 'lg' }))}
+              aria-label="Subscribe to Crich Ventures on YouTube"
             >
-              <a href={youtubeUrl} target="_blank" rel="noopener noreferrer">
-                <Youtube className="mr-2 h-5 w-5" />
-                Subscribe on YouTube
-              </a>
-            </Button>
+              <Youtube className="mr-2 h-5 w-5" />
+              Subscribe on YouTube
+            </a>
           </div>
         </div>
 
