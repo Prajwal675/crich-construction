@@ -3,7 +3,7 @@ import { MessageCircle, X } from 'lucide-react';
 
 const WhatsAppChat = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const phoneNumber = "919876543210";
+  const phoneNumber = "917996116299";
 
   const toggleChat = () => {
     setIsOpen(!isOpen);

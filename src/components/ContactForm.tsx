@@ -134,7 +134,7 @@ const ContactForm = () => {
                   <Phone className="w-5 h-5 mr-3 md:mr-4 mt-1 text-buildacre-orange" />
                   <div>
                     <p className="font-medium">Call us</p>
-                    <a href="tel:+919876543210" className="text-white/80 hover:text-white">+91 98765 43210</a>
+                    <a href="tel:+917996116299" className="text-white/80 hover:text-white">+91 79961 16299</a>
                   </div>
                 </div>
                 
