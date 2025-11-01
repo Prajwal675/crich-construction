@@ -5,34 +5,39 @@ import Footer from '../components/Footer';
 
 const teamMembers = [
   {
-    name: "John Anderson",
+    name: "Chandan K",
     position: "Managing Director",
     image: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=400&h=400&fit=crop&crop=face",
   },
   {
-    name: "Sarah Williams",
+    name: "Kumaraswamy R",
     position: "Director",
     image: "https://images.unsplash.com/photo-1589729132389-8f0e0b55b91e?w=400&h=400&fit=crop&crop=face",
   },
   {
-    name: "Michael Chen",
-    position: "Technical Head",
+    name: "Hanumantharaju",
+    position: "Project Head",
     image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=400&fit=crop&crop=face",
   },
   {
-    name: "David Thompson",
-    position: "General Manager",
+    name: "Nikhil R",
+    position: "Procurement Head",
     image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face",
   },
   {
-    name: "Emily Rodriguez",
-    position: "IT Team Lead",
+    name: "Chethan K",
+    position: "Business Development Head",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
   },
   {
-    name: "James Wilson",
-    position: "Procurement Head",
+    name: "Chethan",
+    position: "Marketing Manager",
     image: "https://images.unsplash.com/photo-1548449112-96a38a643324?w=400&h=400&fit=crop&crop=face",
+  },
+  {
+    name: "Sharath",
+    position: "Engineer",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
   }
 ];
 
