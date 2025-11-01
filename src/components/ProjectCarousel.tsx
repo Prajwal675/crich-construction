@@ -106,16 +106,14 @@ const ProjectCarousel = () => {
         <CarouselContent className="-ml-1 sm:-ml-2 md:-ml-4">
           {projectImages.map((project) => (
             <CarouselItem key={project.id} className="pl-1 sm:pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
-              <div className="group rounded-lg sm:rounded-xl shadow-md sm:shadow-lg transition-all duration-300 hover:shadow-xl animate-fade-in bg-background">
-                <div className="relative w-full h-[300px] sm:h-[360px] md:h-[420px] overflow-hidden rounded-lg sm:rounded-xl bg-muted flex items-center justify-center">
-                  <OptimizedImage
-                    src={project.src}
-                    alt={project.alt}
-                    className="max-w-full max-h-full w-auto h-auto object-contain"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    priority={project.id <= 3}
-                  />
-                </div>
+              <div className="group rounded-lg sm:rounded-xl shadow-md sm:shadow-lg transition-all duration-300 hover:shadow-xl animate-fade-in bg-background relative">
+                <OptimizedImage
+                  src={project.src}
+                  alt={project.alt}
+                  className="w-full h-auto object-contain rounded-lg sm:rounded-xl"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  priority={project.id <= 3}
+                />
               </div>
             </CarouselItem>
           ))}
