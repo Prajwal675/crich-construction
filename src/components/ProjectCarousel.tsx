@@ -107,14 +107,16 @@ const ProjectCarousel = () => {
           {projectImages.map((project) => (
             <CarouselItem key={project.id} className="pl-1 sm:pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
               <div className="group overflow-hidden rounded-lg sm:rounded-xl shadow-md sm:shadow-lg transition-all duration-300 hover:shadow-xl animate-fade-in">
-                <AspectRatio ratio={4/3}>
-                  <OptimizedImage
-                    src={project.src}
-                    alt={project.alt}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 rounded-lg sm:rounded-xl"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    priority={project.id <= 3}
-                  />
+                <AspectRatio ratio={3/2}>
+                  <div className="w-full h-full bg-muted flex items-center justify-center transition-transform duration-500 group-hover:scale-105 rounded-lg sm:rounded-xl">
+                    <OptimizedImage
+                      src={project.src}
+                      alt={project.alt}
+                      className="max-w-full max-h-full object-contain rounded-lg sm:rounded-xl"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      priority={project.id <= 3}
+                    />
+                  </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg sm:rounded-xl" />
                 </AspectRatio>
               </div>
