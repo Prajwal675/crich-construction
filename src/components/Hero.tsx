@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import OptimizedImage from './OptimizedImage';
-import modernBrightHouse from '../assets/modern-bright-house.jpg';
+import OptimizedImage from "./OptimizedImage";
+import modernBrightHouse from "../assets/modern-bright-house.jpg";
 import ContactFormCard from "./ContactFormCard";
 
 const Hero = () => {
@@ -113,7 +113,7 @@ const Hero = () => {
       {/* Scroll indicator */}
       <div className="absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:block">
         <div className="w-6 h-10 md:w-8 md:h-12 border-2 border-white rounded-full flex justify-center pt-2">
-          <div className="w-1 h-2 md:h-3 bg-white rounded-full"></div>
+          <div className="w-1 h-2 md:h-3 bg-white rounded-full" />
         </div>
       </div>
     </section>
