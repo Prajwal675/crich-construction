@@ -121,7 +121,11 @@ html {
   * {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+  }
+
+  /* Allow hover interactions */
+  .hero-feature-card {
+    transition-duration: 0.2s !important;
   }
 }
 
@@ -179,3 +183,371 @@ html {
     transform: translateY(0);
   }
 }
+.hero-feature-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  background: white;
+  border-radius: 14px;
+  padding: 16px 18px;
+
+  box-shadow:
+    0 6px 16px rgba(0, 0, 0, 0.12);
+
+  /* Load animation */
+  opacity: 0;
+  transform: translateY(24px) scale(0.96);
+  animation: heroCardIn 0.7s ease forwards;
+
+  /* Hover transition */
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease;
+}
+
+/* Stagger */
+.hero-feature-card:nth-child(1) { animation-delay: 0.2s; }
+.hero-feature-card:nth-child(2) { animation-delay: 0.35s; }
+.hero-feature-card:nth-child(3) { animation-delay: 0.5s; }
+.hero-feature-card:nth-child(4) { animation-delay: 0.65s; }
+
+/* HOVER — BIGGER & OBVIOUS */
+.hero-feature-card:hover {
+  transform: translateY(-14px) scale(1.04);
+  box-shadow:
+    0 22px 45px rgba(0, 0, 0, 0.28);
+}
+
+/* Entry animation */
+@keyframes heroCardIn {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* DESKTOP HOVER (strong & visible) */
+@media (hover: hover) and (pointer: fine) {
+  .hero-feature-card:hover {
+    transform: translateY(-20px) translateX(12px) scale(1.08);
+    box-shadow:
+      0 35px 80px rgba(0, 0, 0, 0.35),
+      0 0 0 1px rgba(249, 115, 22, 0.35);
+  }
+}
+
+/* MOBILE / TOUCH – NO HOVER JUMP */
+@media (hover: none) {
+  .hero-feature-card {
+    transform: none !important;
+  }
+}
+
+/* Icon */
+.feature-icon {
+  color: #f97316; /* buildacre orange */
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+/* Text wrapper */
+.feature-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Text */
+.feature-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a; /* slate-900 */
+  line-height: 1.1;
+}
+
+.feature-sub {
+  font-size: 13px;
+  color: #475569; /* slate-600 */
+}
+
+.hero-feature-card {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* === PROCESS LAYOUT === */
+
+.process-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  gap: 24px;
+}
+
+/* MOBILE / TABLET */
+@media (max-width: 1024px) {
+  .process-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
+/* === PROCESS WRAPPER === */
+
+.process-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .process-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* === PROCESS STEP === */
+
+.process-step {
+  position: relative;
+  text-align: center;
+  max-width: 160px;
+  transition: transform 0.4s ease;
+}
+
+.process-step:hover {
+  transform: translateY(-14px);
+}
+
+/* === ICON === */
+
+.process-icon {
+  width: 70px;
+  height: 70px;
+  background: #0057b8;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s ease;
+}
+
+.process-step:hover .process-icon {
+  background: #ff6a00;
+  box-shadow: 0 18px 40px rgba(255, 106, 0, 0.4);
+  transform: scale(1.08);
+}
+
+/* === NUMBER BADGE === */
+
+.process-number {
+  position: absolute;
+  top: -6px;
+  right: calc(50% - 34px);
+  width: 26px;
+  height: 26px;
+  background: #ff6a00;
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* === TITLE === */
+
+.process-title {
+  margin-top: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* === ARROWS === */
+
+.process-arrow {
+  position: absolute;
+  color: #ff6a00;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+/* Desktop arrow */
+.desktop-arrow {
+  top: 30px;
+  right: -42px;
+  display: none;
+}
+
+/* Mobile arrow */
+.mobile-arrow {
+  bottom: -36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+}
+
+/* Show correct arrow per device */
+@media (min-width: 1025px) {
+  .desktop-arrow {
+    display: block;
+  }
+}
+
+@media (max-width: 1024px) {
+  .mobile-arrow {
+    display: block;
+  }
+}
+
+/* === SCROLL ANIMATION === */
+
+.process-wrapper.is-visible .process-arrow {
+  opacity: 1;
+}
+
+.process-wrapper.is-visible .desktop-arrow {
+  transform: translateX(10px);
+}
+
+.process-wrapper.is-visible .mobile-arrow {
+  transform: translateX(-50%) translateY(10px);
+}
+
+/* Disable hover on touch devices */
+@media (hover: none) {
+  .process-step:hover {
+    transform: none;
+  }
+}
+
+/* =========================
+   WORST FEARS – RESPONSIVE
+========================= */
+
+.fear-heading {
+  font-family: var(--font-display, inherit);
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 3rem;
+  line-height: 1.25;
+  font-size: 28px;
+}
+
+/* Grid */
+.fear-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+/* Card */
+.fear-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 22px 24px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+/* Desktop hover */
+@media (hover: hover) {
+  .fear-card:hover {
+    transform: translateY(-16px);
+    box-shadow:
+      0 30px 60px rgba(0, 0, 0, 0.18),
+      0 0 0 1px rgba(255, 115, 0, 0.15);
+  }
+}
+
+
+/* Title */
+.fear-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 6px;
+  transition: color 0.3s ease;
+}
+
+/* Accent on hover */
+@media (hover: hover) {
+  .fear-card:hover .fear-title {
+    color: hsl(var(--secondary)); /* buildacre orange */
+  }
+}
+
+/* Description */
+.fear-desc {
+  font-size: 15px;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+/* =========================
+   TABLET (iPad)
+========================= */
+@media (min-width: 640px) {
+  .fear-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .fear-heading {
+    font-size: 32px;
+  }
+}
+
+/* =========================
+   DESKTOP
+========================= */
+@media (min-width: 1024px) {
+  .fear-heading {
+    font-size: 36px;
+  }
+
+  .fear-card {
+    padding: 26px 28px;
+  }
+}
+
+/* =========================
+   TOUCH DEVICES FEEDBACK
+========================= */
+@media (hover: none) {
+  .fear-card:active {
+    transform: scale(0.96);
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.16);
+  }
+}
+
+/* Scroll-in animation */
+.fear-card {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: fearFadeUp 0.7s ease forwards;
+}
+
+.fear-card:nth-child(1) { animation-delay: 0.1s; }
+.fear-card:nth-child(2) { animation-delay: 0.25s; }
+.fear-card:nth-child(3) { animation-delay: 0.4s; }
+.fear-card:nth-child(4) { animation-delay: 0.55s; }
+
+@keyframes fearFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
