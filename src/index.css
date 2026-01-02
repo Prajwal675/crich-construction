@@ -432,7 +432,7 @@ html {
 
 /* ========================= */
    /* WORST FEARS – RESPONSIVE */
-/* ========================= */ */
+/* ========================= */
 
 .fear-heading {
   font-family: var(--font-display, inherit);
@@ -495,9 +495,9 @@ html {
   line-height: 1.6;
 }
 
-/* =========================
-   TABLET (iPad)
-========================= */
+/* ========================= */
+   /* TABLET (iPad) */
+/*========================= */
 @media (min-width: 640px) {
   .fear-grid {
     grid-template-columns: repeat(2, 1fr);
