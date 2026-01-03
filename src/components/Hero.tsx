@@ -56,44 +56,68 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative h-screen flex items-center overflow-hidden">
+    <section className="relative h-screen flex items-center overflow-visible">
       {/* Background */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 pointer-events-none">
         <OptimizedImage
           src={modernBrightHouse}
-          alt="Modern bright house with clean architecture"
+          alt="Modern bright house"
           className="w-full h-full object-cover"
           priority
-          sizes="100vw"
-          width={1920}
-          height={1080}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-black/10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent" />
       </div>
 
       {/* CONTENT */}
       <div className="container mx-auto container-padding relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-start lg:items-center">
           {/* LEFT TEXT */}
           <div>
-            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-display font-bold text-white mb-4 md:mb-6 leading-tight drop-shadow-lg">
-              <span className="text-yellow-400">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-display font-bold leading-tight drop-shadow-lg">
+              <span className="text-yellow-400 block">
                 You've Seen Enough Flats
               </span>
-              <span className="block text-buildacre-orange font-semibold">
-                <span className="text-white">
-                  Now It's Time to Build Something Yours !!
-                </span>
+    
+              <span className="block text-white">
+                Now It's Time to Build Something Yours !!
               </span>
             </h1>
+            <div className="hero-features mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl">
+              <div className="hero-feature-card">
+                <span className="feature-icon">➤</span>
+                
+                <div className="feature-content">
+                  <p className="feature-title">500+</p>
+                  <p className="feature-sub">Quality Checks Per Project</p>
+                </div>
+              </div>
 
-              <ul className="hero-list text-sm sm:text-base md:text-lg lg:text-xl text-white mb-6 md:mb-8 max-w-xl font-medium">
-                <li>500+ Quality Checks Per Project</li>
-                <li>10-Year Structural Warranty</li>
-                <li>1 Dedicated Project Manager</li>
-                <li>Zero Cost Overruns</li>
-              </ul>
-            
+
+              <div className="hero-feature-card">
+                <span className="feature-icon">➤</span>
+                <div className="feature-content">
+                  <p className="feature-title">10-Year</p>
+                  <p className="feature-sub">Structural Warranty</p>
+                </div>
+              </div>
+              
+              <div className="hero-feature-card">
+                <span className="feature-icon">➤</span>
+                <div className="feature-content">
+                  <p className="feature-title">1</p>
+                  <p className="feature-sub">Dedicated Project Manager</p>
+                </div>
+              </div>
+              
+              <div className="hero-feature-card">
+                <span className="feature-icon">➤</span>
+                <div className="feature-content">
+                  <p className="feature-title">Zero</p>
+                  <p className="feature-sub">Cost Overruns</p>
+                </div>
+              </div>
+            </div>
+
           </div>
 
           {/* RIGHT – RED BOX AREA (FORM) */}

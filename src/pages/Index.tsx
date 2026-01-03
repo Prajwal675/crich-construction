@@ -11,6 +11,11 @@ import MaterialSponsors from "../components/MaterialSponsors";
 import ContactForm from "../components/ContactForm";
 import Footer from "../components/Footer";
 import WhatsAppChat from "../components/WhatsAppChat";
+import SEOHeroText from "../components/SEOHeroText";
+import TrustSection from "../components/TrustSection";
+import PainPoints from "../components/WorstFearsSection";
+import ProcessSection from "../components/ProcessSection";
+import FinalCTA from "../components/FinalCTA";
 
 const Index = () => {
   useEffect(() => {
@@ -42,6 +47,10 @@ const Index = () => {
 
       <main className="flex-grow">
         <Hero />
+        <SEOHeroText />     {/* H1 for SEO */}
+        <TrustSection />
+        <PainPoints />
+        <ProcessSection />
         <ServicesSection />
         <UspsSection />
         <HowItWorks />
@@ -49,6 +58,7 @@ const Index = () => {
         <SocialFeed />
         <TestimonialsSection />
         <MaterialSponsors />
+        <FinalCTA />
 
         {/* FULL CONTACT SECTION */}
         <ContactForm />
