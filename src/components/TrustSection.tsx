@@ -1,6 +1,6 @@
 const TrustSection = () => {
   return (
-    <section className="section-padding bg-buildacre-bg">
+    <section className="section-padding bg-white">
       <div className="container mx-auto container-padding max-w-6xl">
         <h2 className="font-display font-bold tracking-tight text-2xl sm:text-3xl md:text-4xl mb-4 text-buildacre-darkgray">
             Trusted Construction Company in Bangalore with{" "}
