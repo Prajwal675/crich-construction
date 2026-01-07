@@ -13,6 +13,7 @@ import Footer from "../components/Footer";
 import WhatsAppChat from "../components/WhatsAppChat";
 import SEOHeroText from "../components/SEOHeroText";
 import TrustSection from "../components/TrustSection";
+import StorySection from "../components/StorySection";
 import PainPoints from "../components/WorstFearsSection";
 import ProcessSection from "../components/ProcessSection";
 import FinalCTA from "../components/FinalCTA";
@@ -49,6 +50,7 @@ const Index = () => {
         <Hero />
         <SEOHeroText />     {/* H1 for SEO */}
         <TrustSection />
+        <StorySection />
         <PainPoints />
         <ProcessSection />
         <ServicesSection />
