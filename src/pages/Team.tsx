@@ -4,20 +4,20 @@ import Footer from "../components/Footer";
 
 /* ===== TEAM DATA ===== */
 const teamMembers = [
-  { name: "Raju HV", role: "HRM", image: "/src/assets/team/raju-hv.jpg" },
-  { name: "Chethan K", role: "General Manager", image: "/src/assets/team/chethan-k.jpg" },
-  { name: "Vijay", role: "BDO", image: "/src/assets/team/vijay-bdo.jpg" },
-  { name: "Sharath", role: "OM", image: "/src/assets/team/sharath-om.jpg" },
-  { name: "Nikhil R", role: "Project Manager", image: "/src/assets/team/nikhil-r.jpg" },
-  { name: "Puvith", role: "Project Head", image: "/src/assets/team/puvith.jpg" },
-  { name: "Chethan", role: "Digital Marketing Manager", image: "/src/assets/team/chethan-digital.jpg" },
-  { name: "Darshan R", role: "Procurement Head", image: "/src/assets/team/darshan-r.jpg" },
-  { name: "Praneeth", role: "Architect", image: "/src/assets/team/praneeth.jpg" },
-  { name: "Shashank DP", role: "Structural Engineer", image: "/src/assets/team/shashank-dp.jpg" },
-  { name: "Jeevan DG", role: "Senior Engineer", image: "/src/assets/team/jeevan-dg.jpg" },
-  { name: "Raihan", role: "QC Engineer", image: "/src/assets/team/raihan.jpg" },
-  { name: "Nindini", role: "QS Engineer", image: "/src/assets/team/nindini.jpg" },
-  { name: "Manish", role: "Site Engineer", image: "/src/assets/team/manish.jpg" },
+  { name: "Raju HV", role: "HRM", image: "/team/raju-hv.jpg" },
+  { name: "Chethan K", role: "General Manager", image: "/team/chethan-k.jpg" },
+  { name: "Vijay", role: "BDO", image: "/team/vijay-bdo.jpg" },
+  { name: "Sharath", role: "OM", image: "/team/sharath-om.jpg" },
+  { name: "Nikhil R", role: "Project Manager", image: "/team/nikhil-r.jpg" },
+  { name: "Puvith", role: "Project Head", image: "/team/puvith.jpg" },
+  { name: "Chethan", role: "Digital Marketing Manager", image: "/team/chethan-digital.jpg" },
+  { name: "Darshan R", role: "Procurement Head", image: "/team/darshan-r.jpg" },
+  { name: "Praneeth", role: "Architect", image: "/team/praneeth.jpg" },
+  { name: "Shashank DP", role: "Structural Engineer", image: "/team/shashank-dp.jpg" },
+  { name: "Jeevan DG", role: "Senior Engineer", image: "/team/jeevan-dg.jpg" },
+  { name: "Raihan", role: "QC Engineer", image: "/team/raihan.jpg" },
+  { name: "Nindini", role: "QS Engineer", image: "/team/nindini.jpg" },
+  { name: "Manish", role: "Site Engineer", image: "/team/manish.jpg" },
 ];
 
 const Team = () => {
