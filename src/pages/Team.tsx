@@ -1,33 +1,21 @@
 import React, { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import rajuHvImage from "../assets/team/raju-hv.png";
-import chethanKImage from "../assets/team/chethan-k.jpg";
-import vijayBdoImage from "../assets/team/vijay-bdo.png";
-import sharathOmImage from "../assets/team/sharath-om.jpg";
-import nikhilRImage from "../assets/team/nikhil-r.jpg";
-import puvithImage from "../assets/team/puvith.png";
-import chethanDigitalImage from "../assets/team/chethan-digital.jpg";
-import darshanRImage from "../assets/team/darshan-r.jpg";
-import praneethImage from "../assets/team/praneeth.jpg";
-import shashankDpImage from "../assets/team/shashank-dp.jpg";
-import jeevanDgImage from "../assets/team/jeevan-dg.jpg";
-import raihanImage from "../assets/team/raihan.jpg";
 
 /* ===== TEAM DATA ===== */
 const teamMembers = [
-  { name: "Raju HV", role: "HRM", image: rajuHvImage },
-  { name: "Chethan K", role: "General Manager", image: chethanKImage },
-  { name: "Vijay", role: "BDO", image: vijayBdoImage },
-  { name: "Sharath", role: "OM", image: sharathOmImage },
-  { name: "Nikhil R", role: "Project Manager", image: nikhilRImage },
-  { name: "Puvith", role: "Project Head", image: puvithImage },
-  { name: "Chethan", role: "Digital Marketing Manager", image: chethanDigitalImage },
-  { name: "Darshan R", role: "Procurement Head", image: darshanRImage },
-  { name: "Praneeth", role: "Architect", image: praneethImage },
-  { name: "Shashank DP", role: "Structural Engineer", image: shashankDpImage },
-  { name: "Jeevan DG", role: "Senior Engineer", image: jeevanDgImage },
-  { name: "Raihan", role: "QC Engineer", image: raihanImage },
+  { name: "Raju HV", role: "HRM", image: "/team/raju-hv.png" },
+  { name: "Chethan K", role: "General Manager", image: "/team/chethan-k.jpg" },
+  { name: "Vijay", role: "BDO", image: "/team/vijay-bdo.png" },
+  { name: "Sharath", role: "OM", image: "/team/sharath-om.jpg" },
+  { name: "Nikhil R", role: "Project Manager", image: "/team/nikhil-r.jpg" },
+  { name: "Puvith", role: "Project Head", image: "/team/puvith.png" },
+  { name: "Chethan", role: "Digital Marketing Manager", image: "/team/chethan-digital.jpg" },
+  { name: "Darshan R", role: "Procurement Head", image: "/team/darshan-r.jpg" },
+  { name: "Praneeth", role: "Architect", image: "/team/praneeth.jpg" },
+  { name: "Shashank DP", role: "Structural Engineer", image: "/team/shashank-dp.jpg" },
+  { name: "Jeevan DG", role: "Senior Engineer", image: "/team/jeevan-dg.jpg" },
+  { name: "Raihan", role: "QC Engineer", image: "/team/raihan.jpg" },
 ];
 
 const Team = () => {
