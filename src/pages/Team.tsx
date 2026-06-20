@@ -1,23 +1,33 @@
 import React, { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import rajuHvImage from "../assets/team/raju-hv.png";
+import chethanKImage from "../assets/team/chethan-k.jpg";
+import vijayBdoImage from "../assets/team/vijay-bdo.png";
+import sharathOmImage from "../assets/team/sharath-om.jpg";
+import nikhilRImage from "../assets/team/nikhil-r.jpg";
+import puvithImage from "../assets/team/puvith.png";
+import chethanDigitalImage from "../assets/team/chethan-digital.jpg";
+import darshanRImage from "../assets/team/darshan-r.jpg";
+import praneethImage from "../assets/team/praneeth.jpg";
+import shashankDpImage from "../assets/team/shashank-dp.jpg";
+import jeevanDgImage from "../assets/team/jeevan-dg.jpg";
+import raihanImage from "../assets/team/raihan.jpg";
 
 /* ===== TEAM DATA ===== */
 const teamMembers = [
-  { name: "Raju HV", role: "HRM", image: "/src/assets/team/raju-hv.jpg" },
-  { name: "Chethan K", role: "General Manager", image: "/src/assets/team/chethan-k.jpg" },
-  { name: "Vijay", role: "BDO", image: "/src/assets/team/vijay-bdo.jpg" },
-  { name: "Sharath", role: "OM", image: "/src/assets/team/sharath-om.jpg" },
-  { name: "Nikhil R", role: "Project Manager", image: "/src/assets/team/nikhil-r.jpg" },
-  { name: "Puvith", role: "Project Head", image: "/src/assets/team/puvith.jpg" },
-  { name: "Chethan", role: "Digital Marketing Manager", image: "/src/assets/team/chethan-digital.jpg" },
-  { name: "Darshan R", role: "Procurement Head", image: "/src/assets/team/darshan-r.jpg" },
-  { name: "Praneeth", role: "Architect", image: "/src/assets/team/praneeth.jpg" },
-  { name: "Shashank DP", role: "Structural Engineer", image: "/src/assets/team/shashank-dp.jpg" },
-  { name: "Jeevan DG", role: "Senior Engineer", image: "/src/assets/team/jeevan-dg.jpg" },
-  { name: "Raihan", role: "QC Engineer", image: "/src/assets/team/raihan.jpg" },
-  { name: "Nindini", role: "QS Engineer", image: "/src/assets/team/nindini.jpg" },
-  { name: "Manish", role: "Site Engineer", image: "/src/assets/team/manish.jpg" },
+  { name: "Raju HV", role: "HRM", image: rajuHvImage },
+  { name: "Chethan K", role: "General Manager", image: chethanKImage },
+  { name: "Vijay", role: "BDO", image: vijayBdoImage },
+  { name: "Sharath", role: "OM", image: sharathOmImage },
+  { name: "Nikhil R", role: "Project Manager", image: nikhilRImage },
+  { name: "Puvith", role: "Project Head", image: puvithImage },
+  { name: "Chethan", role: "Digital Marketing Manager", image: chethanDigitalImage },
+  { name: "Darshan R", role: "Procurement Head", image: darshanRImage },
+  { name: "Praneeth", role: "Architect", image: praneethImage },
+  { name: "Shashank DP", role: "Structural Engineer", image: shashankDpImage },
+  { name: "Jeevan DG", role: "Senior Engineer", image: jeevanDgImage },
+  { name: "Raihan", role: "QC Engineer", image: raihanImage },
 ];
 
 const Team = () => {
@@ -29,20 +39,20 @@ const Team = () => {
     <div className="min-h-screen flex flex-col bg-white">
       <Navbar />
 
-      <main className="flex-grow pt-24">
+      <main className="flex-grow pb-16 pt-20 sm:pb-20 md:pt-24 lg:pb-24">
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* HEADER */}
-          <div className="mb-20">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[110px] font-bold leading-tight text-buildacre-darkgray">
-              our <br />
+          <div className="mb-12 sm:mb-16 lg:mb-20">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[110px] font-bold leading-[0.95] text-buildacre-darkgray">
+              Our <br />
               <span className="italic">Team.</span>
             </h1>
 
-            <div className="max-w-2xl mt-8">
-              <h2 className="text-xl font-medium mb-4 text-buildacre-darkgray">
+            <div className="mt-6 max-w-2xl sm:mt-8">
+              <h2 className="mb-3 text-lg font-medium text-buildacre-darkgray sm:mb-4 sm:text-xl">
                 “Building Excellence Through Collaborative Leadership”
               </h2>
-              <p className="text-muted-foreground">
+              <p className="leading-relaxed text-muted-foreground">
                 Our strength lies in our people — experienced professionals
                 committed to quality, transparency, and execution excellence.
               </p>
@@ -50,18 +60,18 @@ const Team = () => {
           </div>
 
           {/* TEAM GRID */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-x-8 lg:gap-y-10">
             {teamMembers.map((member) => (
               <div
                 key={member.name}
                 className="group relative rounded-xl overflow-hidden shadow-lg"
               >
                 {/* IMAGE */}
-                <div className="aspect-square overflow-hidden">
+                <div className="aspect-[4/5] overflow-hidden">
                   <img
                     src={member.image}
                     alt={`${member.name} - ${member.role}`}
-                    className="w-full h-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105"
+                    className="h-full w-full origin-top object-cover object-top grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0"
                     loading="lazy"
                   />
                 </div>
