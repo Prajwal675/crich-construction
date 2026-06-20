@@ -164,7 +164,7 @@ html {
 
 /* Arrow bullet */
 .hero-list li::before {
-  content: "➤";
+  content: ">";
   position: absolute;
   left: 0;
   top: 0;
@@ -212,7 +212,7 @@ html {
 .hero-feature-card:nth-child(3) { animation-delay: 0.5s; }
 .hero-feature-card:nth-child(4) { animation-delay: 0.65s; }
 
-/* HOVER — BIGGER & OBVIOUS */
+/* HOVER - BIGGER & OBVIOUS */
 .hero-feature-card:hover {
   transform: translateY(-14px) scale(1.04);
   box-shadow:
@@ -237,7 +237,7 @@ html {
   }
 }
 
-/* MOBILE / TOUCH – NO HOVER JUMP */
+/* MOBILE / TOUCH - NO HOVER JUMP */
 @media (hover: none) {
   .hero-feature-card {
     transform: none !important;
@@ -431,7 +431,7 @@ html {
 }
 
 /* ========================= */
-   /* WORST FEARS – RESPONSIVE */
+   /* WORST FEARS - RESPONSIVE */
 /* ========================= */
 
 .fear-heading {

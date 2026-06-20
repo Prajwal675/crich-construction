@@ -32,9 +32,11 @@ const Navbar = () => {
 
   const handleLogoClick = () => {
     setIsMenuOpen(false);
-    location.pathname !== "/"
-      ? navigate("/")
-      : window.scrollTo({ top: 0, behavior: "smooth" });
+    if (location.pathname !== "/") {
+      navigate("/");
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   return (

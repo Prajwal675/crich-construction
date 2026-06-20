@@ -49,7 +49,7 @@ const TestimonialsSection = () => {
         <div className="text-center mb-16">
           <h2 className="mb-4">What Our Clients Say</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Don't just take our word for it — hear from the clients who've experienced the BuildAcre difference.
+            Don't just take our word for it - hear from the clients who've experienced the BuildAcre difference.
           </p>
         </div>
 

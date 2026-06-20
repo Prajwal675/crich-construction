@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-/* ===== TEAM DATA ===== */
 const teamMembers = [
   { name: "Raju HV", role: "HRM", image: "/team/raju-hv.png" },
   { name: "Chethan K", role: "General Manager", image: "/team/chethan-k.jpg" },

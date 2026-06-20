@@ -23,7 +23,7 @@ const WorstFearsSection = () => {
       <div className="container mx-auto container-padding max-w-6xl">
         {/* SECTION HEADING */}
         <h2 className="fear-heading">
-          We’ve Seen Your{" "}
+          We've Seen Your{" "}
           <span className="text-buildacre-orange">Worst Fears</span>
         </h2>
 
