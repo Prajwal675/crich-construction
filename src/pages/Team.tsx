@@ -52,10 +52,10 @@ const Team = () => {
 
             <div className="max-w-2xl mt-8">
               <h2 className="text-xl font-medium mb-4 text-buildacre-darkgray">
-                “Building Excellence Through Collaborative Leadership”
+                "Building Excellence Through Collaborative Leadership"
               </h2>
               <p className="text-muted-foreground">
-                Our strength lies in our people — experienced professionals
+                Our strength lies in our people - experienced professionals
                 committed to quality, transparency, and execution excellence.
               </p>
             </div>

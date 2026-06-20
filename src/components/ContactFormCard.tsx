@@ -2,12 +2,21 @@ import React from "react";
 import { Send } from "lucide-react";
 
 type Props = {
-  formData: any;
-  errors: any;
+  formData: {
+    name: string;
+    email: string;
+    phone: string;
+    urgency: string;
+    message: string;
+    acceptPolicy: boolean;
+  };
+  errors: Record<string, string>;
   isSubmitting: boolean;
-  handleChange: any;
-  handleCheckboxChange: any;
-  handleSubmit: any;
+  handleChange: React.ChangeEventHandler<
+    HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+  >;
+  handleCheckboxChange: React.ChangeEventHandler<HTMLInputElement>;
+  handleSubmit: React.FormEventHandler<HTMLFormElement>;
 };
 
 const urgencyOptions = [
