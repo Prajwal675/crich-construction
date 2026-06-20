@@ -90,7 +90,7 @@ const Hero = () => {
                   key={title}
                   className="flex items-center gap-3 rounded-xl bg-white/95 p-2 sm:p-3 md:p-4 shadow-sm"
                 >
-                  <span className="text-orange-500 text-sm">➤</span>
+                  <span className="text-orange-500 text-sm">&gt;</span>
                   <div>
                     <p className="text-sm md:text-base lg:text-lg font-bold text-gray-900">
                       {title}
@@ -104,7 +104,7 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* FORM – MOBILE LIGHT / TABLET BALANCED / DESKTOP FULL */}
+          {/* FORM - MOBILE LIGHT / TABLET BALANCED / DESKTOP FULL */}
           <div className="mt-4 md:mt-6 lg:mt-0 flex justify-center lg:justify-end">
             <div
               className="
