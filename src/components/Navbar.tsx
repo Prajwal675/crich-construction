@@ -8,6 +8,9 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const supportsTransparentHeader = ["/", "/boq"].includes(location.pathname);
+  const useTransparentHeader =
+    supportsTransparentHeader && !isScrolled && !isMenuOpen;
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -38,24 +41,25 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white shadow-md py-2" : "bg-transparent py-4"
+      className={`fixed top-0 left-0 z-50 h-20 w-full transition-colors duration-300 md:h-24 ${
+        useTransparentHeader ? "bg-transparent" : "bg-white shadow-md"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center">
+      <div className="mx-auto h-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-full items-center justify-between">
           {/* Logo */}
           <button
             onClick={handleLogoClick}
-            className="h-10 sm:h-12 md:h-14 lg:h-16 flex items-center"
+            className="flex h-11 items-center sm:h-12 md:h-14"
+            aria-label="Crich Constructions home"
           >
             <img
               src={logoImage}
               alt="Crich Builders logo"
               className={`h-full w-auto transition-all duration-300 ${
-                isScrolled
-                  ? "brightness-100"
-                  : "brightness-100 md:brightness-0 md:invert"
+                useTransparentHeader
+                  ? "brightness-100 md:brightness-0 md:invert"
+                  : "brightness-100"
               }`}
             />
           </button>
@@ -67,9 +71,9 @@ const Navbar = () => {
                 key={id}
                 onClick={() => handleNavClick(`#${id}`)}
                 className={`font-medium text-sm lg:text-base transition-colors ${
-                  isScrolled
-                    ? "text-buildacre-darkgray hover:text-buildacre-blue"
-                    : "text-white hover:text-buildacre-orange"
+                  useTransparentHeader
+                    ? "text-white hover:text-buildacre-orange"
+                    : "text-buildacre-darkgray hover:text-buildacre-blue"
                 }`}
               >
                 {id.charAt(0).toUpperCase() + id.slice(1)}
@@ -79,9 +83,9 @@ const Navbar = () => {
             <Link
               to="/projects"
               className={`font-medium text-sm lg:text-base transition-colors ${
-                isScrolled
-                  ? "text-buildacre-darkgray hover:text-buildacre-blue"
-                  : "text-white hover:text-buildacre-orange"
+                useTransparentHeader
+                  ? "text-white hover:text-buildacre-orange"
+                  : "text-buildacre-darkgray hover:text-buildacre-blue"
               }`}
             >
               Projects
@@ -90,9 +94,9 @@ const Navbar = () => {
             <Link
               to="/boq"
               className={`font-medium text-sm lg:text-base transition-colors ${
-                isScrolled
-                  ? "text-buildacre-darkgray hover:text-buildacre-blue"
-                  : "text-white hover:text-buildacre-orange"
+                useTransparentHeader
+                  ? "text-white hover:text-buildacre-orange"
+                  : "text-buildacre-darkgray hover:text-buildacre-blue"
               }`}
             >
               BOQ
@@ -109,7 +113,7 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <button
             className={`md:hidden p-2 rounded-md ${
-              isScrolled ? "text-buildacre-darkgray" : "text-white"
+              useTransparentHeader ? "text-white" : "text-buildacre-darkgray"
             }`}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
@@ -120,7 +124,7 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden fixed top-[64px] left-0 w-full bg-white shadow-lg z-40 max-h-[calc(100vh-64px)] overflow-y-auto">
+          <div className="fixed left-0 top-20 z-40 max-h-[calc(100vh-5rem)] w-full overflow-y-auto bg-white shadow-lg md:hidden">
             <div className="flex flex-col px-6 py-4 space-y-4">
               {["services", "about", "testimonials", "contact"].map((id) => (
                 <button

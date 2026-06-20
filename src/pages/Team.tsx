@@ -2,34 +2,19 @@ import React, { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-/* ===== TEAM DATA ===== */
-// const teamMembers = [
-//   { name: "Raju HV", role: "HRM", image: "/team/raju-hv.jpg" },
-//   { name: "Chethan K", role: "General Manager", image: "/team/chethan-k.jpg" },
-//   { name: "Vijay", role: "BDO", image: "/team/vijay-bdo.jpg" },
-//   { name: "Sharath", role: "OM", image: "/team/sharath-om.jpg" },
-//   { name: "Nikhil R", role: "Project Manager", image: "/team/nikhil-r.jpg" },
-//   { name: "Puvith", role: "Project Head", image: "/team/puvith.jpg" },
-//   { name: "Chethan", role: "Digital Marketing Manager", image: "/team/chethan-digital.jpg" },
-//   { name: "Darshan R", role: "Procurement Head", image: "/team/darshan-r.jpg" },
-//   { name: "Praneeth", role: "Architect", image: "/team/praneeth.jpg" },
-//   { name: "Shashank DP", role: "Structural Engineer", image: "/team/shashank-dp.jpg" },
-//   { name: "Jeevan DG", role: "Senior Engineer", image: "/team/jeevan-dg.jpg" },
-//   { name: "Raihan", role: "QC Engineer", image: "/team/raihan.jpg" },
-//   { name: "Nindini", role: "QS Engineer", image: "/team/nindini.jpg" },
-//   { name: "Manish", role: "Site Engineer", image: "/team/manish.jpg" },
-// ];
-
 const teamMembers = [
+  { name: "Raju HV", role: "HRM", image: "/team/raju-hv.png" },
   { name: "Chethan K", role: "General Manager", image: "/team/chethan-k.jpg" },
+  { name: "Vijay", role: "BDO", image: "/team/vijay-bdo.png" },
+  { name: "Sharath", role: "OM", image: "/team/sharath-om.jpg" },
+  { name: "Nikhil R", role: "Project Manager", image: "/team/nikhil-r.jpg" },
+  { name: "Puvith", role: "Project Head", image: "/team/puvith.png" },
   { name: "Chethan", role: "Digital Marketing Manager", image: "/team/chethan-digital.jpg" },
   { name: "Darshan R", role: "Procurement Head", image: "/team/darshan-r.jpg" },
-  { name: "Jeevan DG", role: "Senior Engineer", image: "/team/jeevan-dg.jpg" },
-  { name: "Nikhil R", role: "Project Manager", image: "/team/nikhil-r.jpg" },
   { name: "Praneeth", role: "Architect", image: "/team/praneeth.jpg" },
-  { name: "Raihan", role: "QC Engineer", image: "/team/raihan.jpg" },
-  { name: "Sharath", role: "OM", image: "/team/sharath-om.jpg" },
   { name: "Shashank DP", role: "Structural Engineer", image: "/team/shashank-dp.jpg" },
+  { name: "Jeevan DG", role: "Senior Engineer", image: "/team/jeevan-dg.jpg" },
+  { name: "Raihan", role: "QC Engineer", image: "/team/raihan.jpg" },
 ];
 
 const Team = () => {
@@ -41,39 +26,39 @@ const Team = () => {
     <div className="min-h-screen flex flex-col bg-white">
       <Navbar />
 
-      <main className="flex-grow pt-24">
+      <main className="flex-grow pb-16 pt-20 sm:pb-20 md:pt-24 lg:pb-24">
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* HEADER */}
-          <div className="mb-20">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[110px] font-bold leading-tight text-buildacre-darkgray">
-              our <br />
+          <div className="mb-12 sm:mb-16 lg:mb-20">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[110px] font-bold leading-[0.95] text-buildacre-darkgray">
+              Our <br />
               <span className="italic">Team.</span>
             </h1>
 
-            <div className="max-w-2xl mt-8">
-              <h2 className="text-xl font-medium mb-4 text-buildacre-darkgray">
-                "Building Excellence Through Collaborative Leadership"
+            <div className="mt-6 max-w-2xl sm:mt-8">
+              <h2 className="mb-3 text-lg font-medium text-buildacre-darkgray sm:mb-4 sm:text-xl">
+                “Building Excellence Through Collaborative Leadership”
               </h2>
-              <p className="text-muted-foreground">
-                Our strength lies in our people - experienced professionals
+              <p className="leading-relaxed text-muted-foreground">
+                Our strength lies in our people — experienced professionals
                 committed to quality, transparency, and execution excellence.
               </p>
             </div>
           </div>
 
           {/* TEAM GRID */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-x-8 lg:gap-y-10">
             {teamMembers.map((member) => (
               <div
                 key={member.name}
                 className="group relative rounded-xl overflow-hidden shadow-lg"
               >
                 {/* IMAGE */}
-                <div className="aspect-square overflow-hidden">
+                <div className="aspect-[4/5] overflow-hidden">
                   <img
                     src={member.image}
                     alt={`${member.name} - ${member.role}`}
-                    className="w-full h-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105"
+                    className="h-full w-full origin-top object-cover object-top grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0"
                     loading="lazy"
                   />
                 </div>

@@ -51,7 +51,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen md:min-h-[85vh] lg:h-screen pt-24 lg:pt-0 flex items-start lg:items-center overflow-hidden">
+    <section className="relative flex min-h-screen items-start overflow-hidden pb-12 pt-24 sm:pt-28 md:pb-16 md:pt-28 lg:pt-32">
       {/* Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <OptimizedImage

@@ -11,7 +11,7 @@ const Projects = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <main className="flex-grow">
+      <main className="flex-grow pt-20 md:pt-24">
         <div className="section-padding bg-background">
           <div className="container mx-auto container-padding">
             <div className="text-center mb-12">
