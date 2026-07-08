@@ -1,54 +1,10 @@
-import React, { useState } from "react";
 import OptimizedImage from "./OptimizedImage";
 import modernBrightHouse from "../assets/modern-bright-house.jpg";
 import ContactFormCard from "./ContactFormCard";
+import { useLeadForm } from "../hooks/useLeadForm";
 
 const Hero = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    urgency: "Immediately",
-    message: "",
-    acceptPolicy: false,
-  });
-
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const validateForm = () => {
-    const newErrors: Record<string, string> = {};
-    if (!formData.name.trim()) newErrors.name = "Name is required";
-    if (!formData.email.trim()) newErrors.email = "Email is required";
-    if (!formData.phone.trim()) newErrors.phone = "Phone is required";
-    if (!formData.message.trim()) newErrors.message = "Message is required";
-    if (!formData.acceptPolicy)
-      newErrors.acceptPolicy = "Accept the privacy policy";
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, checked } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: checked }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!validateForm()) return;
-    setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      alert("Form submitted from Hero!");
-    }, 1200);
-  };
+  const leadForm = useLeadForm("Hero form");
 
   return (
     <section className="relative flex min-h-screen items-start overflow-hidden pb-12 pt-24 sm:pt-28 md:pb-16 md:pt-28 lg:pt-32">
@@ -115,12 +71,7 @@ const Hero = () => {
               "
             >
               <ContactFormCard
-                formData={formData}
-                errors={errors}
-                isSubmitting={isSubmitting}
-                handleChange={handleChange}
-                handleCheckboxChange={handleCheckboxChange}
-                handleSubmit={handleSubmit}
+                {...leadForm}
               />
             </div>
           </div>

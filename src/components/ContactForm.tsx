@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
 import { Check, Send, Phone, Mail, MapPin } from 'lucide-react';
-import { useIsMobile } from '../hooks/use-mobile';
+import { useLeadForm } from '../hooks/useLeadForm';
 
 const urgencyOptions = [
   "Immediately",
@@ -9,108 +8,18 @@ const urgencyOptions = [
   "Just exploring options"
 ];
 
-// Formspree endpoint URL from Vite environment variable
-const FORMSPREE_URL = import.meta.env.VITE_FORMSPREE_URL as string;
-
 const ContactForm = () => {
-  const isMobile = useIsMobile();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    urgency: 'Immediately',
-    message: '',
-    acceptPolicy: false
-  });
-
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const validateForm = () => {
-    const newErrors: Record<string, string> = {};
-    
-    if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
-    }
-    
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email is invalid';
-    }
-    
-    if (!formData.phone.trim()) {
-      newErrors.phone = 'Phone number is required';
-    }
-    
-    if (!formData.message.trim()) {
-      newErrors.message = 'Message is required';
-    }
-    
-    if (!formData.acceptPolicy) {
-      newErrors.acceptPolicy = 'You must accept the privacy policy';
-    }
-    
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, checked } = e.target;
-    setFormData(prev => ({ ...prev, [name]: checked }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (validateForm()) {
-      setIsSubmitting(true);
-      
-      try {
-        const response = await fetch(FORMSPREE_URL, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            name: formData.name,
-            email: formData.email,
-            phone: formData.phone,
-            urgency: formData.urgency,
-            message: formData.message
-          })
-        });
-
-        if (response.ok) {
-          setIsSubmitted(true);
-          setFormData({
-            name: '',
-            email: '',
-            phone: '',
-            urgency: 'Immediately',
-            message: '',
-            acceptPolicy: false
-          });
-          setTimeout(() => {
-            setIsSubmitted(false);
-          }, 5000);
-        } else {
-          alert('Failed to send message. Please try again later.');
-        }
-      } catch (error) {
-        console.error('Failed to send message:', error);
-        alert('Failed to send message. Please try again later.');
-      } finally {
-        setIsSubmitting(false);
-      }
-    }
-  };
+  const {
+    formData,
+    errors,
+    isSubmitting,
+    isSubmitted,
+    submitError,
+    handleChange,
+    handleCheckboxChange,
+    handleSubmit,
+    resetSubmissionState,
+  } = useLeadForm('Contact section form');
 
   return (
     <section id="contact" className="section-padding bg-gradient-to-b from-white to-buildacre-bg">
@@ -187,7 +96,7 @@ const ContactForm = () => {
                   Your message has been successfully sent. We'll get back to you shortly.
                 </p>
                 <button 
-                  onClick={() => setIsSubmitted(false)}
+                  onClick={resetSubmissionState}
                   className="btn-primary"
                 >
                   Send Another Message
@@ -196,6 +105,17 @@ const ContactForm = () => {
             ) : (
               <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-8 shadow-lg">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <input
+                    type="text"
+                    name="website"
+                    value={formData.website}
+                    onChange={handleChange}
+                    className="hidden"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                  />
+
                   <div className="col-span-1">
                     <label htmlFor="name" className="block text-sm font-medium mb-1">
                       Full Name*
@@ -310,6 +230,12 @@ const ContactForm = () => {
                     )}
                   </div>
                 </div>
+
+                {submitError && (
+                  <p className="mt-4 rounded-md bg-red-50 px-3 py-2 text-sm text-red-700">
+                    {submitError}
+                  </p>
+                )}
 
                 <div className="mt-4 md:mt-6">
                   <button
