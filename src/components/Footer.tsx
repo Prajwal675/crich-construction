@@ -79,7 +79,7 @@ const Footer = () => {
               </li>
               <li className="flex items-start">
                 <MapPin className="w-5 h-5 mr-3 mt-1 text-buildacre-orange" />
-                <span>123 Construction Way, Building District, City - 400001</span>
+                <span>Samrudhi Complex, Pipeline Rd, Chowdeshwari Nagar, Laggere, Bengaluru, Karnataka 560058</span>
               </li>
             </ul>
           </div>
