@@ -160,7 +160,7 @@ const ContactForm = () => {
                   <MapPin className="w-5 h-5 mr-3 md:mr-4 mt-1 text-buildacre-orange" />
                   <div>
                     <p className="font-medium">Visit us</p>
-                    <p className="text-white/80">123 Construction Way, Building District, City - 400001</p>
+                    <p className="text-white/80">Samrudhi Complex, Pipeline Rd, Chowdeshwari Nagar, Laggere, Bengaluru, Karnataka 560058</p>
                   </div>
                 </div>
               </div>
