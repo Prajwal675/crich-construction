@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Check, Send, Phone, Mail, MapPin } from 'lucide-react';
 import { useIsMobile } from '../hooks/use-mobile';
+import { saveLeadToDatabase, isFormspreeConfigured } from '@/lib/submitLead';
 
 const urgencyOptions = [
   "Immediately",
@@ -70,22 +71,31 @@ const ContactForm = () => {
     e.preventDefault();
     
     if (validateForm()) {
+      if (!isFormspreeConfigured(FORMSPREE_URL)) {
+        console.error('VITE_FORMSPREE_URL is not configured');
+        alert('Sorry, the contact form is not configured yet. Please call or email us directly.');
+        return;
+      }
+
       setIsSubmitting(true);
       
       try {
-        const response = await fetch(FORMSPREE_URL, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            name: formData.name,
-            email: formData.email,
-            phone: formData.phone,
-            urgency: formData.urgency,
-            message: formData.message
-          })
-        });
+        const [response] = await Promise.all([
+          fetch(FORMSPREE_URL, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              name: formData.name,
+              email: formData.email,
+              phone: formData.phone,
+              urgency: formData.urgency,
+              message: formData.message
+            })
+          }),
+          saveLeadToDatabase({ ...formData, source: 'contact-section' }),
+        ]);
 
         if (response.ok) {
           setIsSubmitted(true);
@@ -298,11 +308,7 @@ const ContactForm = () => {
                         className="mt-1 h-5 w-5 text-buildacre-blue rounded focus:ring-buildacre-blue"
                       />
                       <label htmlFor="acceptPolicy" className="ml-2 text-sm">
-                        I agree to the{" "}
-                        <a href="#" className="text-buildacre-blue hover:underline">
-                          privacy policy
-                        </a>{" "}
-                        and consent to having my data processed.
+                        I agree to the privacy policy and consent to having my data processed.
                       </label>
                     </div>
                     {errors.acceptPolicy && (

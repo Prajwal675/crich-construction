@@ -1,5 +1,5 @@
 import React from "react";
-import { Send } from "lucide-react";
+import { Check, Send } from "lucide-react";
 
 type Props = {
   formData: {
@@ -12,6 +12,7 @@ type Props = {
   };
   errors: Record<string, string>;
   isSubmitting: boolean;
+  isSubmitted?: boolean;
   handleChange: React.ChangeEventHandler<
     HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
   >;
@@ -30,10 +31,25 @@ const ContactFormCard = ({
   formData,
   errors,
   isSubmitting,
+  isSubmitted,
   handleChange,
   handleCheckboxChange,
   handleSubmit,
 }: Props) => {
+  if (isSubmitted) {
+    return (
+      <div className="bg-white rounded-2xl p-6 md:p-8 shadow-xl w-full max-w-md flex flex-col items-center justify-center text-center">
+        <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
+          <Check className="text-green-600" size={28} />
+        </div>
+        <h3 className="text-xl font-bold text-green-800 mb-2">Thank You!</h3>
+        <p className="text-green-700 text-sm">
+          Your message has been sent. We'll get back to you shortly.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -41,9 +57,12 @@ const ContactFormCard = ({
     >
       <div className="grid grid-cols-1 gap-4">
         <div>
-          <label className="block text-sm font-medium mb-1">Full Name*</label>
+          <label htmlFor="hero-name" className="block text-sm font-medium mb-1">Full Name*</label>
           <input
+            id="hero-name"
             name="name"
+            type="text"
+            autoComplete="name"
             value={formData.name}
             onChange={handleChange}
             className="w-full px-4 py-3 bg-gray-50 border rounded-md"
@@ -53,9 +72,12 @@ const ContactFormCard = ({
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1">Email*</label>
+          <label htmlFor="hero-email" className="block text-sm font-medium mb-1">Email*</label>
           <input
+            id="hero-email"
             name="email"
+            type="email"
+            autoComplete="email"
             value={formData.email}
             onChange={handleChange}
             className="w-full px-4 py-3 bg-gray-50 border rounded-md"
@@ -65,9 +87,12 @@ const ContactFormCard = ({
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1">Phone*</label>
+          <label htmlFor="hero-phone" className="block text-sm font-medium mb-1">Phone*</label>
           <input
+            id="hero-phone"
             name="phone"
+            type="tel"
+            autoComplete="tel"
             value={formData.phone}
             onChange={handleChange}
             className="w-full px-4 py-3 bg-gray-50 border rounded-md"
@@ -77,10 +102,11 @@ const ContactFormCard = ({
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1">
+          <label htmlFor="hero-urgency" className="block text-sm font-medium mb-1">
             Project Urgency
           </label>
           <select
+            id="hero-urgency"
             name="urgency"
             value={formData.urgency}
             onChange={handleChange}
@@ -93,10 +119,11 @@ const ContactFormCard = ({
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1">
+          <label htmlFor="hero-message" className="block text-sm font-medium mb-1">
             Your Message*
           </label>
           <textarea
+            id="hero-message"
             name="message"
             value={formData.message}
             onChange={handleChange}
@@ -104,21 +131,23 @@ const ContactFormCard = ({
             className="w-full px-4 py-3 bg-gray-50 border rounded-md"
             placeholder="Tell us about your project"
           />
+          {errors.message && <p className="text-xs text-red-500">{errors.message}</p>}
         </div>
 
         <div className="flex items-start">
           <input
             type="checkbox"
+            id="hero-acceptPolicy"
             name="acceptPolicy"
             checked={formData.acceptPolicy}
             onChange={handleCheckboxChange}
             className="mt-1 mr-2"
           />
-          <span className="text-sm">
-            I agree to the{" "}
-            <a className="text-buildacre-blue underline">privacy policy</a>
-          </span>
+          <label htmlFor="hero-acceptPolicy" className="text-sm">
+            I agree to the privacy policy
+          </label>
         </div>
+        {errors.acceptPolicy && <p className="text-xs text-red-500 -mt-2">{errors.acceptPolicy}</p>}
 
         <button
           type="submit"

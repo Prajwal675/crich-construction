@@ -46,7 +46,7 @@ const SocialFeed = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
               href={instagramUrl}
-              target="_top"
+              target="_blank"
               rel="noopener noreferrer external nofollow"
               className={cn(
                 buttonVariants({ variant: 'default', size: 'lg' }),
@@ -59,7 +59,7 @@ const SocialFeed = () => {
             </a>
             <a
               href={youtubeUrl}
-              target="_top"
+              target="_blank"
               rel="noopener noreferrer external nofollow"
               className={cn(buttonVariants({ variant: 'destructive', size: 'lg' }))}
               aria-label="Subscribe to Crich Ventures on YouTube"

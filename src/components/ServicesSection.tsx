@@ -1,10 +1,6 @@
 import React from 'react';
 import house1 from '../assets/house1.jpg';
 import h2 from '../assets/h2.jpg';
-import interiorImg from '../assets/services/interior.jpg';
-import commercialImg from '../assets/services/commercial.jpg';
-import infrastructureImg from '../assets/services/infrastructure.jpg';
-import renovationImg from '../assets/services/renovation.jpg';
 
 const services = [
   {

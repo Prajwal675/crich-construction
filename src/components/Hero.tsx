@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import OptimizedImage from "./OptimizedImage";
 import modernBrightHouse from "../assets/modern-bright-house.jpg";
 import ContactFormCard from "./ContactFormCard";
+import { saveLeadToDatabase, isFormspreeConfigured } from "@/lib/submitLead";
+
+// Formspree endpoint URL from Vite environment variable
+const FORMSPREE_URL = import.meta.env.VITE_FORMSPREE_URL as string;
 
 const Hero = () => {
   const [formData, setFormData] = useState({
@@ -15,11 +19,16 @@ const Hero = () => {
 
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
     if (!formData.name.trim()) newErrors.name = "Name is required";
-    if (!formData.email.trim()) newErrors.email = "Email is required";
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Email is invalid";
+    }
     if (!formData.phone.trim()) newErrors.phone = "Phone is required";
     if (!formData.message.trim()) newErrors.message = "Message is required";
     if (!formData.acceptPolicy)
@@ -40,14 +49,55 @@ const Hero = () => {
     setFormData((prev) => ({ ...prev, [name]: checked }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) return;
+
+    if (!isFormspreeConfigured(FORMSPREE_URL)) {
+      console.error("VITE_FORMSPREE_URL is not configured");
+      alert("Sorry, the contact form is not configured yet. Please call or email us directly.");
+      return;
+    }
+
     setIsSubmitting(true);
-    setTimeout(() => {
+    try {
+      const [formspreeResponse] = await Promise.all([
+        fetch(FORMSPREE_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            urgency: formData.urgency,
+            message: formData.message,
+          }),
+        }),
+        saveLeadToDatabase({ ...formData, source: "hero" }),
+      ]);
+
+      if (formspreeResponse.ok) {
+        setIsSubmitted(true);
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          urgency: "Immediately",
+          message: "",
+          acceptPolicy: false,
+        });
+        setTimeout(() => setIsSubmitted(false), 5000);
+      } else {
+        alert("Failed to send message. Please try again later.");
+      }
+    } catch (error) {
+      console.error("Failed to send message:", error);
+      alert("Failed to send message. Please try again later.");
+    } finally {
       setIsSubmitting(false);
-      alert("Form submitted from Hero!");
-    }, 1200);
+    }
   };
 
   return (
@@ -118,6 +168,7 @@ const Hero = () => {
                 formData={formData}
                 errors={errors}
                 isSubmitting={isSubmitting}
+                isSubmitted={isSubmitted}
                 handleChange={handleChange}
                 handleCheckboxChange={handleCheckboxChange}
                 handleSubmit={handleSubmit}

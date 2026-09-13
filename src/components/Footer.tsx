@@ -1,13 +1,35 @@
 
 import React, { useState } from 'react';
 import { Phone, Mail, MapPin } from 'lucide-react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Footer = () => {
-  const [cookieConsent, setCookieConsent] = useState(localStorage.getItem('cookieConsent') === 'true');
+  const [cookieChoiceMade, setCookieChoiceMade] = useState(
+    localStorage.getItem('cookieConsent') !== null
+  );
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const acceptCookies = () => {
     localStorage.setItem('cookieConsent', 'true');
-    setCookieConsent(true);
+    setCookieChoiceMade(true);
+  };
+
+  const declineCookies = () => {
+    localStorage.setItem('cookieConsent', 'false');
+    setCookieChoiceMade(true);
+  };
+
+  const handleQuickLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    if (location.pathname === '/') {
+      document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      navigate('/');
+      setTimeout(() => {
+        document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
   };
 
   const currentYear = new Date().getFullYear();
@@ -26,11 +48,11 @@ const Footer = () => {
           <div>
             <h4 className="text-xl font-semibold text-white mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              <li><a href="#services" className="text-gray-300 hover:text-white transition-colors">Services</a></li>
-              <li><a href="#about" className="text-gray-300 hover:text-white transition-colors">About Us</a></li>
-              <li><a href="#projects" className="text-gray-300 hover:text-white transition-colors">Projects</a></li>
-              <li><a href="#testimonials" className="text-gray-300 hover:text-white transition-colors">Testimonials</a></li>
-              <li><a href="#contact" className="text-gray-300 hover:text-white transition-colors">Contact</a></li>
+              <li><a href="#services" onClick={(e) => handleQuickLinkClick(e, '#services')} className="text-gray-300 hover:text-white transition-colors">Services</a></li>
+              <li><a href="#about" onClick={(e) => handleQuickLinkClick(e, '#about')} className="text-gray-300 hover:text-white transition-colors">About Us</a></li>
+              <li><a href="#projects" onClick={(e) => handleQuickLinkClick(e, '#projects')} className="text-gray-300 hover:text-white transition-colors">Projects</a></li>
+              <li><a href="#testimonials" onClick={(e) => handleQuickLinkClick(e, '#testimonials')} className="text-gray-300 hover:text-white transition-colors">Testimonials</a></li>
+              <li><a href="#contact" onClick={(e) => handleQuickLinkClick(e, '#contact')} className="text-gray-300 hover:text-white transition-colors">Contact</a></li>
             </ul>
           </div>
 
@@ -77,7 +99,7 @@ const Footer = () => {
         </div>
       </div>
 
-      {!cookieConsent && (
+      {!cookieChoiceMade && (
         <div className="fixed bottom-0 left-0 right-0 bg-black/90 p-4 z-50 animate-fade-in">
           <div className="container mx-auto container-padding flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-white text-sm">
@@ -92,7 +114,7 @@ const Footer = () => {
                 Accept
               </button>
               <button 
-                onClick={acceptCookies}
+                onClick={declineCookies}
                 className="bg-transparent border border-gray-500 text-white px-4 py-2 rounded hover:bg-white/10 transition-colors text-sm font-medium"
               >
                 Decline

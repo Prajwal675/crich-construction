@@ -6,28 +6,28 @@ const testimonials = [
     name: "Sarah Johnson",
     role: "Homeowner",
     image: "https://randomuser.me/api/portraits/women/12.jpg",
-    quote: "BuildAcre transformed our house into the dream home we always wanted. Their attention to detail and quality workmanship exceeded our expectations. The team was professional, reliable, and a pleasure to work with throughout the project.",
+    quote: "Crich Constructions transformed our house into the dream home we always wanted. Their attention to detail and quality workmanship exceeded our expectations. The team was professional, reliable, and a pleasure to work with throughout the project.",
     rating: 5
   },
   {
     name: "Michael Chen",
     role: "Business Owner",
     image: "https://randomuser.me/api/portraits/men/22.jpg",
-    quote: "We hired BuildAcre for our office renovation, and they delivered exceptional results on time and within budget. Their team understood our vision and brought it to life perfectly. The workspace has transformed our company culture.",
+    quote: "We hired Crich Constructions for our office renovation, and they delivered exceptional results on time and within budget. Their team understood our vision and brought it to life perfectly. The workspace has transformed our company culture.",
     rating: 5
   },
   {
     name: "Emily Rodriguez",
     role: "Project Manager",
     image: "https://randomuser.me/api/portraits/women/32.jpg",
-    quote: "As someone who works in the industry, I have high standards for construction work. BuildAcre met and exceeded those standards with their professionalism, expertise, and attention to detail. They're my go-to recommendation now.",
+    quote: "As someone who works in the industry, I have high standards for construction work. Crich Constructions met and exceeded those standards with their professionalism, expertise, and attention to detail. They're my go-to recommendation now.",
     rating: 4
   },
   {
     name: "David Thompson",
     role: "Real Estate Developer",
     image: "https://randomuser.me/api/portraits/men/42.jpg",
-    quote: "I've worked with many construction companies over the years, and BuildAcre stands out for their reliability and quality. Their team communicates effectively, resolves issues promptly, and consistently delivers excellent results.",
+    quote: "I've worked with many construction companies over the years, and Crich Constructions stands out for their reliability and quality. Their team communicates effectively, resolves issues promptly, and consistently delivers excellent results.",
     rating: 5
   }
 ];
@@ -49,7 +49,7 @@ const TestimonialsSection = () => {
         <div className="text-center mb-16">
           <h2 className="mb-4">What Our Clients Say</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Don't just take our word for it - hear from the clients who've experienced the BuildAcre difference.
+            Don't just take our word for it - hear from the clients who've experienced the Crich Constructions difference.
           </p>
         </div>
 
