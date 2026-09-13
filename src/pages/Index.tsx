@@ -20,25 +20,9 @@ import FinalCTA from "../components/FinalCTA";
 
 const Index = () => {
   useEffect(() => {
-    const preloadImages = [
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-      "/lovable-uploads/a3ea3364-9d5b-47e5-92e1-5312fb2f5ea8.png",
-      "/lovable-uploads/4843a59d-d71e-43a8-88b0-8d15f5d11ab1.png",
-      "/lovable-uploads/project-i1.jpg",
-      "/lovable-uploads/project-i2.jpg",
-    ];
-
-    preloadImages.forEach((src) => {
-      const img = new Image();
-      img.src = src;
-
-      const link = document.createElement("link");
-      link.rel = "preload";
-      link.as = "image";
-      link.href = src;
-      document.head.appendChild(link);
-    });
-
+    // Hero background image is already eagerly loaded via OptimizedImage's
+    // `priority` prop in Hero.tsx - no need to duplicate that work here.
+    // Below-the-fold carousel/gallery images should stay lazy-loaded.
     window.scrollTo(0, 0);
   }, []);
 

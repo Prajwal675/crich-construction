@@ -23,6 +23,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(priority);
   const [imageSrc, setImageSrc] = useState('');
+  const [hasError, setHasError] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
@@ -53,12 +54,16 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
     setIsLoaded(true);
   };
 
-  const handleError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+  const handleError = () => {
     console.warn('Image failed to load:', imageSrc);
-    // Fallback handling
     if (imageSrc.includes('.webp')) {
+      // Retry once with a .jpg fallback.
       setImageSrc(imageSrc.replace('.webp', '.jpg'));
+      return;
     }
+    // No further fallback available - stop showing the loading skeleton.
+    setHasError(true);
+    setIsLoaded(true);
   };
 
   return (
@@ -68,7 +73,12 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
           <div className="w-6 h-6 border-2 border-primary border-t-transparent rounded-full animate-spin opacity-60"></div>
         </div>
       )}
-      {isInView && imageSrc && (
+      {hasError && (
+        <div className="absolute inset-0 bg-gray-100 flex items-center justify-center text-gray-400 text-xs">
+          Image unavailable
+        </div>
+      )}
+      {isInView && imageSrc && !hasError && (
         <img
           src={imageSrc}
           alt={alt}
