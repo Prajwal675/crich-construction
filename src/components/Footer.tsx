@@ -59,10 +59,10 @@ const Footer = () => {
           <div>
             <h4 className="text-xl font-semibold text-white mb-4">Services</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Residential Construction</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Commercial Buildings</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Infrastructure Projects</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Renovations</a></li>
+              <li><a href="#services" onClick={(e) => handleQuickLinkClick(e, '#services')} className="text-gray-300 hover:text-white transition-colors">Residential Construction</a></li>
+              <li><a href="#services" onClick={(e) => handleQuickLinkClick(e, '#services')} className="text-gray-300 hover:text-white transition-colors">Commercial Buildings</a></li>
+              <li><a href="#services" onClick={(e) => handleQuickLinkClick(e, '#services')} className="text-gray-300 hover:text-white transition-colors">Infrastructure Projects</a></li>
+              <li><a href="#services" onClick={(e) => handleQuickLinkClick(e, '#services')} className="text-gray-300 hover:text-white transition-colors">Renovations</a></li>
             </ul>
           </div>
 
@@ -91,11 +91,6 @@ const Footer = () => {
           <p className="text-gray-400 text-sm mb-4 md:mb-0">
             &copy; {currentYear} Crich Constructions. All rights reserved.
           </p>
-          <div className="flex space-x-4 text-gray-400 text-sm">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-white transition-colors">Sitemap</a>
-          </div>
         </div>
       </div>
 
